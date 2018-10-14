@@ -12,6 +12,9 @@ public class CameraController : MonoBehaviour
 {
     #region Attributes
 
+    [FoldoutGroup("GamePlay"), Tooltip("Use weight"), SerializeField]
+    private bool useWeight = true;
+
     // Time before next camera move
     [FoldoutGroup("GamePlay"), Tooltip("Le smooth de la caméra"), SerializeField]
     private float smoothTime = 0.2f;
@@ -241,12 +244,99 @@ public class CameraController : MonoBehaviour
         averageTargetPosition = averagePos;
     }
 
+    private void FindWeightPosition()
+    {
+        // Final position
+        Vector3 averagePos = new Vector3();
+        int activeTargetAmount = 0;
+        float xPosMiddle = 0;
+        float yPosMiddle = 0;
+        float minX = 0;
+        float maxX = 0;
+        float minY = 0;
+        float maxY = 0;
+
+        // For each target
+        for (int i = 0; i < targetList.Count; i++)
+        {
+            CameraTarget target = targetList[i];
+
+            // Check target is active
+            if (!target || !target.gameObject.activeSelf)
+            {
+                continue;
+            }
+
+            for (int k = 0; k < target.weightTarget; k++)
+            {
+                xPosMiddle += target.transform.position.x;
+                yPosMiddle += target.transform.position.z;
+                activeTargetAmount++;
+            }
+
+            
+
+            // Set first target as min max position
+            if (i == 0)
+            {
+                minX = maxX = target.transform.position.x;
+                minY = maxY = target.transform.position.z;
+            }
+            else
+            {
+                // Extends min max bounds
+                minX = (target.transform.position.x < minX) ? target.transform.position.x : minX;
+                maxX = (target.transform.position.x > maxX) ? target.transform.position.x : maxX;
+                //minY = (target.transform.position.y < minY) ? target.transform.position.y : minY;
+                //maxY = (target.transform.position.y > maxY) ? target.transform.position.y : maxY;
+                minY = (target.transform.position.z < minY) ? target.transform.position.z : minY;
+                maxY = (target.transform.position.z > maxY) ? target.transform.position.z : maxY;
+            }
+
+            
+        }
+
+        // Find middle point for all targets
+        if (activeTargetAmount > 0)
+        {
+            /*minX -= borderMarginXYZ[0];
+            maxX += borderMarginXYZ[0];
+            minY -= borderMarginXYZ[1];
+            maxY -= borderMarginXYZ[1];*/
+
+            averagePos.x = xPosMiddle / activeTargetAmount;
+            //averagePos.y = (minY + maxY) / 2.0F;
+            averagePos.z = yPosMiddle / activeTargetAmount;
+        }
+
+        // If no targets, select fallback focus
+        if (targetList.Count == 0)
+        {
+            if (fallBackTarget && fallBack)
+            {
+                averagePos = fallBackTarget.position;
+            }
+        }
+
+        // Calculate zoom
+        float dist = Mathf.Max(Mathf.Abs(maxX - minX), Mathf.Abs(maxY - minY));
+        //averagePos.z = (targetList.Count > 1) ? -Mathf.Min(Mathf.Max(minZoom, dist + borderMargin), maxZoom) : -defaultZoom;
+        averagePos.y = (targetList.Count > 1) ? Mathf.Min(Mathf.Max(minZoom, dist + borderMarginZ), maxZoom) : defaultZoom;
+
+        // Change camera target
+        averageTargetPosition = averagePos;
+    }
+
+
     /// <summary>
     /// Initialize camera
     /// </summary>
     public void InitializeCamera()
     {
-        FindAveragePosition();
+        if (useWeight)
+            FindWeightPosition();
+        else
+            FindAveragePosition();
         transform.position = averageTargetPosition;
     }
 
@@ -290,7 +380,10 @@ public class CameraController : MonoBehaviour
 				return;
 			}
 
-            FindAveragePosition();
+            if (useWeight)
+                FindWeightPosition();
+            else
+                FindAveragePosition();
         }
     }
 

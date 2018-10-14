@@ -7,6 +7,9 @@ public class CameraTarget : MonoBehaviour
 {
     #region Attributes
 
+    [Range(1, 100)]
+    public int weightTarget = 1;
+
 	[SerializeField]
 	private bool onEnableAdd = true;
 
