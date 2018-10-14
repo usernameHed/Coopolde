@@ -45,7 +45,7 @@ public class PlayerInput : MonoBehaviour
     public Vector3 GetDirInput()
     {
         //Vector3 dirArrowPlayer = QuaternionExt.QuaternionToDir(dirArrow.rotation, Vector3.up);
-        Vector3 dirInputPlayer = new Vector3(horiz, verti, 0);
+        Vector3 dirInputPlayer = new Vector3(horiz, 0, verti);
         //Debug.DrawRay(transform.position, dirInputPlayer.normalized, Color.yellow, 1f);
         return (dirInputPlayer);
     }
@@ -66,22 +66,22 @@ public class PlayerInput : MonoBehaviour
     /// </summary>
     private void GetInput()
     {
-        horiz = PlayerConnected.Instance.GetPlayer(playerController.IdPlayer).GetAxis("Move Horizontal");
-        verti = PlayerConnected.Instance.GetPlayer(playerController.IdPlayer).GetAxis("Move Vertical");
+        horiz = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetAxis("Move Horizontal");
+        verti = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetAxis("Move Vertical");
 
-        jumpInput = PlayerConnected.Instance.GetPlayer(playerController.IdPlayer).GetButton("FireA");
-        jumpUpInput = PlayerConnected.Instance.GetPlayer(playerController.IdPlayer).GetButtonUp("FireA");
+        jumpInput = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButton("FireA");
+        jumpUpInput = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButtonUp("FireA");
 
-        gripInput = PlayerConnected.Instance.GetPlayer(playerController.IdPlayer).GetButton("FireX") || PlayerConnected.Instance.GetPlayer(playerController.IdPlayer).GetButton("FireY");
-        gripUpInput = PlayerConnected.Instance.GetPlayer(playerController.IdPlayer).GetButtonUp("FireX") || PlayerConnected.Instance.GetPlayer(playerController.IdPlayer).GetButtonUp("FireY");
-        gripDownInput = PlayerConnected.Instance.GetPlayer(playerController.IdPlayer).GetButtonDown("FireX") || PlayerConnected.Instance.GetPlayer(playerController.IdPlayer).GetButtonDown("FireY");
+        gripInput = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButton("FireX") || PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButton("FireY");
+        gripUpInput = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButtonUp("FireX") || PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButtonUp("FireY");
+        gripDownInput = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButtonDown("FireX") || PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButtonDown("FireY");
 
-        fatInput = PlayerConnected.Instance.GetPlayer(playerController.IdPlayer).GetButton("FireY");
-        fatUpInput = PlayerConnected.Instance.GetPlayer(playerController.IdPlayer).GetButtonUp("FireY");
-        fatDownInput = PlayerConnected.Instance.GetPlayer(playerController.IdPlayer).GetButtonDown("FireY");
+        fatInput = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButton("FireY");
+        fatUpInput = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButtonUp("FireY");
+        fatDownInput = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButtonDown("FireY");
 
-        modyfyRopeAddDownInput = Mathf.Clamp((PlayerConnected.Instance.GetPlayer(playerController.IdPlayer).GetAxis("LeftTrigger2") + PlayerConnected.Instance.GetPlayer(playerController.IdPlayer).GetAxis("RightTrigger1")), 0f, 1f);
-        modyfyRopeRemoveDownInput = Mathf.Clamp((PlayerConnected.Instance.GetPlayer(playerController.IdPlayer).GetAxis("RightTrigger2") + PlayerConnected.Instance.GetPlayer(playerController.IdPlayer).GetAxis("LeftTrigger1")), 0f, 1f);
+        modyfyRopeAddDownInput = Mathf.Clamp((PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetAxis("LeftTrigger2") + PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetAxis("RightTrigger1")), 0f, 1f);
+        modyfyRopeRemoveDownInput = Mathf.Clamp((PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetAxis("RightTrigger2") + PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetAxis("LeftTrigger1")), 0f, 1f);
     }
 
     private void Update()

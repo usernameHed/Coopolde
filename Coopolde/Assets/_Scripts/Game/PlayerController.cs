@@ -6,8 +6,16 @@ using UnityEngine;
 public class PlayerController : SingletonMono<PlayerController>
 {
     [FoldoutGroup("GamePlay"), Tooltip("id unique du joueur correspondant à sa manette"), SerializeField]
-    private int idPlayer = 0;
-    public int IdPlayer { set { idPlayer = value; } get { return idPlayer; } }
+    public int idPlayer = 0;
+
+    [FoldoutGroup("Object"), Tooltip("id unique du joueur correspondant à sa manette")]
+    public PlayerInput playerInput;
+    [FoldoutGroup("Object"), Tooltip("id unique du joueur correspondant à sa manette")]
+    public PlayerMove playerMove;
+
+
+    
+    public Rigidbody rb;
 
     private bool enabledScript = true;      //tell if this script should be active or not
 
@@ -31,7 +39,7 @@ public class PlayerController : SingletonMono<PlayerController>
     /// </summary>
     private void MovePlayer()
     {
-
+        playerMove.Move();
     }
 
     /// <summary>
