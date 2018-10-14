@@ -13,8 +13,6 @@ public class PlayerController : SingletonMono<PlayerController>
     [FoldoutGroup("Object"), Tooltip("id unique du joueur correspondant à sa manette")]
     public PlayerMove playerMove;
 
-
-    
     public Rigidbody rb;
 
     private bool enabledScript = true;      //tell if this script should be active or not
