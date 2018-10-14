@@ -331,6 +331,7 @@ public class CameraController : MonoBehaviour
     /// <summary>
     /// Initialize camera
     /// </summary>
+    [Button]
     public void InitializeCamera()
     {
         if (useWeight)
