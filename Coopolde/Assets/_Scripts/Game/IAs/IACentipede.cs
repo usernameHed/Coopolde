@@ -63,20 +63,34 @@ public class IACentipede : MonoBehaviour
         if (!iaIsAttackingForward)
             return;
 
+        //here, we are attacking, and very close to the player, reset timer
         if (cuca.isMeInsideUs)
         {
             timeLoseInterestWhenAttacking.Reset();
             timeLoseInterestWhenAttacking.StartCoolDown();
         }
+
+        //here we lose the player...
+        if (!cuca.isMeInsideUs && timeLoseInterestWhenAttacking.IsStartedAndOver())
+        {
+            Debug.Log("fuck");
+            ResetIA();
+        }
     }
 
     public void Init()
+    {
+        ResetIA();
+    }
+
+    private void ResetIA()
     {
         state = 0;
         isPasive = true;
         isGettingAngry = false;
         iaIsAttackingForward = false;
         timeGettingAngry.Reset();
+        cuca.isAttacking = false;
     }
 
     /// <summary>
