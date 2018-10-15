@@ -73,8 +73,8 @@ GameObject:
   - component: {fileID: 23218172119890012}
   - component: {fileID: 135601376405683486}
   - component: {fileID: 114847813074206738}
-  m_Layer: 12
-  m_Name: Trigger
+  m_Layer: 13
+  m_Name: TriggerIA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -617,7 +617,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c2a58d48857ecd4a8bbc7fab3e95fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lampManager: {fileID: 114868605450470476}
+  mySelf: {fileID: 114868605450470476}
+  me: {fileID: 0}
 --- !u!114 &114868605450470476
 MonoBehaviour:
   m_ObjectHideFlags: 1

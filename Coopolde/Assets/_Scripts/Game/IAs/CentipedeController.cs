@@ -5,38 +5,34 @@ using UnityEngine;
 
 public class CentipedeController : EntityController, IKillable
 {
+    [FoldoutGroup("GamePlay"), SerializeField]
+    private float magnitudeRun = 0.3f;
+    [FoldoutGroup("GamePlay"), SerializeField]
+    private float timeOfDeath = 0.5f;
+    [Space(10)]
+    [SerializeField, FoldoutGroup("GamePlay")]
+    private float speedTurnOnWall = 10f;
+    [SerializeField, FoldoutGroup("GamePlay")]
+    private float speedMoveOnWall = 5f;
+
     [SerializeField]
     public GameObject refToFollow = null;
 
     [SerializeField]
-    private IACentipede iaCentiped;
+    public IACentipede iaCentiped;
 
-    [SerializeField]
-    private float rotationSpeed = 5;          //rotation speed of player
-
-    [SerializeField]
-    private float magnitudeRun = 0.3f;
-    [SerializeField]
-    private float timeOfDeath = 0.5f;
-
-    [SerializeField, FoldoutGroup("OnWall")]
-    private float speedTurnOnWall = 10f;
-    [SerializeField, FoldoutGroup("OnWall")]
-    private float speedMoveOnWall = 5f;
-
-    
+    [ReadOnly]
     public bool isAttacking = false;
-
     [ReadOnly]
     public bool isWalking = false;
     [ReadOnly]
     public bool isRunning = false;
+    [ReadOnly]
+    public bool isMeInsideUs = false;
 
-    [SerializeField]
+    [SerializeField, ReadOnly]
     private bool isDying = false;
     public bool IsDying { get { return (isDying); } }
-
-    [Space(10)]
 
 
     private Vector3 dirCura = new Vector3(0, 0, 0);
@@ -125,9 +121,6 @@ public class CentipedeController : EntityController, IKillable
             return;
 
         playerMove.Move(rb.transform.forward, dirCura.magnitude);
-        
-        //UnityMovement.MoveByForcePushing_WithPhysics(rb, rb.transform.forward, speedPlayer * GetOnlyForward() * Time.deltaTime);
-        //rb.transform.rotation = ExtQuaternion.DirObject(rb.transform.rotation, dirCura, rotationSpeed, ExtQuaternion.TurnType.Y);
     }
 
     /// <summary>

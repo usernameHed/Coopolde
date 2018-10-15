@@ -33,4 +33,5 @@ public class WallCollider : MonoBehaviour
             CucaController.InvertDirection(CalculateCollision(collision));
         }
     }
+    
 }

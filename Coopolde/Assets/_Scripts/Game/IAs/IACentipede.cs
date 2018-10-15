@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class IACentipede : MonoBehaviour
 {
+    [FoldoutGroup("GamePlay"), SerializeField]
+    private FrequencyCoolDown timeGettingAngry;
+    [FoldoutGroup("GamePlay"), SerializeField]
+    private FrequencyCoolDown timeLoseInterestWhenAttacking;
+
     [SerializeField]
     private CentipedeController cuca;
 
@@ -12,12 +17,21 @@ public class IACentipede : MonoBehaviour
     private int state = 0;
 
     [SerializeField]
-    private FrequencyCoolDown timeGettingAngry;
-    [SerializeField]
     private FrequencyTimer frequency;
 
     private bool isPasive = true;
+    [ReadOnly]
     public bool isGettingAngry = false;
+    [ReadOnly]
+    public bool iaIsAttackingForward = false;
+
+    public bool IsPasiveAndReadyToGetAngry()
+    {
+        if (!cuca.isAttacking && isPasive)
+            return (true);
+
+        return (false);
+    }
 
     /// <summary>
     /// test if centipede have to get
@@ -39,6 +53,20 @@ public class IACentipede : MonoBehaviour
         {
             isGettingAngry = false;
             //ICI passe en état ATTACK
+            timeLoseInterestWhenAttacking.StartCoolDown();
+            iaIsAttackingForward = true;
+        }
+    }
+
+    private void IsCloseToPlayer()
+    {
+        if (!iaIsAttackingForward)
+            return;
+
+        if (cuca.isMeInsideUs)
+        {
+            timeLoseInterestWhenAttacking.Reset();
+            timeLoseInterestWhenAttacking.StartCoolDown();
         }
     }
 
@@ -47,6 +75,7 @@ public class IACentipede : MonoBehaviour
         state = 0;
         isPasive = true;
         isGettingAngry = false;
+        iaIsAttackingForward = false;
         timeGettingAngry.Reset();
     }
 
@@ -60,6 +89,7 @@ public class IACentipede : MonoBehaviour
 
         TestToSetAttacking();
         TestToAttack();
+        IsCloseToPlayer();
 
         float x, y;
 
