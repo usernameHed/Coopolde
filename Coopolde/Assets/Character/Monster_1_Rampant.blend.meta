@@ -14,6 +14,8 @@ ModelImporter:
     100016: Bone_002
     100018: Bone_003
     100020: Bone_004
+    100022: Sphere
+    100024: Sphere_001
     400000: Cube
     400002: Cube_001
     400004: //RootNode
@@ -25,22 +27,33 @@ ModelImporter:
     400016: Bone_002
     400018: Bone_003
     400020: Bone_004
+    400022: Sphere
+    400024: Sphere_001
     2100000: unnamed
     2100002: Material
     2300000: Cube
     2300002: Cube_001
     2300004: Cube_002
     2300006: Cube_003
+    2300008: Sphere
+    2300010: Sphere_001
     3300000: Cube
     3300002: Cube_001
     3300004: Cube_002
     3300006: Cube_003
+    3300008: Sphere
+    3300010: Sphere_001
     4300000: Cube_001
     4300002: Cube
     4300004: Cube_002
     4300006: Cube_003
+    4300008: Sphere
+    4300010: Sphere_001
     7400000: Default Take
+    7400002: ArmatureAction
     9500000: //RootNode
+    11100000: //RootNode
+    13700000: Cube_001
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -61,14 +74,70 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Default Take
+      takeName: Default Take
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: ArmatureAction
+      takeName: ArmatureAction
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -115,7 +184,7 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
