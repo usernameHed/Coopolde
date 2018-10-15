@@ -37,6 +37,9 @@ public class CrawlerController : EntityController, IKillable
     /// </summary>
     private void TurnPlayer()
     {
+        if (!refToFollow)
+            return;
+
         dirCura = refToFollow.transform.position - rb.transform.position;
         entityTurn.SetDirection(new Vector2(dirCura.x, dirCura.z), false);
     }

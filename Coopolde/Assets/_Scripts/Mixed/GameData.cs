@@ -39,7 +39,8 @@ public static class GameData
         Object,
         Colliders,
         Entity,
-        OnlyIA
+        OnlyIA,
+        Hurt,
     }
 
     public enum Sounds

@@ -27,6 +27,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1374908041156842
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4245776459098892}
+  - component: {fileID: 114494793780168862}
+  - component: {fileID: 135062368713244144}
+  m_Layer: 14
+  m_Name: Hurt
+  m_TagString: Hurt
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1462658937139620
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,6 +161,19 @@ Transform:
   m_Father: {fileID: 4690248279150106}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!4 &4245776459098892
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1374908041156842}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4690248279150106}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4268462649361538
 Transform:
   m_ObjectHideFlags: 1
@@ -195,6 +225,7 @@ Transform:
   m_Children:
   - {fileID: 4268462649361538}
   - {fileID: 4221507228278386}
+  - {fileID: 4245776459098892}
   m_Father: {fileID: 4041798301342918}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -305,6 +336,21 @@ MonoBehaviour:
   objectToTurn: {fileID: 4690248279150106}
   canTurn: 0
   dirToTurn: {x: 0, y: 0}
+--- !u!114 &114494793780168862
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1374908041156842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1bd6fa6c601a254e9e74b7269ece7f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hurtAmount: 1
+  hurtOnlyPlayer: 1
+  coolDown:
+    timeCoolDown: 0.5
 --- !u!114 &114618890181401338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -356,6 +402,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CucaController: {fileID: 114968930353594208}
+--- !u!135 &135062368713244144
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1374908041156842}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.16
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135493345216617556
 SphereCollider:
   m_ObjectHideFlags: 1
