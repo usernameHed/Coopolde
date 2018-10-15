@@ -37,6 +37,8 @@ public static class GameData
         Obstacle,
         Default,
         Object,
+        Colliders,
+        Entity
     }
 
     public enum Sounds
