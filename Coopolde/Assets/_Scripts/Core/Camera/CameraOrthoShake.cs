@@ -1,19 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraOrthoShake : MonoBehaviour
+public class CameraOrthoShake : SingletonMono<CameraOrthoShake>
 {
-    public static CameraOrthoShake instance;
-
     private Vector3 _originalPos;
     private float _timeAtCurrentFrame;
     private float _timeAtLastFrame;
     private float _fakeDelta;
-
-    void Awake()
-    {
-        instance = this;
-    }
 
     void Update()
     {
@@ -23,11 +16,11 @@ public class CameraOrthoShake : MonoBehaviour
         _timeAtLastFrame = _timeAtCurrentFrame;
     }
 
-    public static void Shake(float duration, float amount)
+    public void Shake(float duration, float amount)
     {
-        instance._originalPos = instance.gameObject.transform.localPosition;
-        instance.StopAllCoroutines();
-        instance.StartCoroutine(instance.CShake(duration, amount));
+        _originalPos = gameObject.transform.localPosition;
+        StopAllCoroutines();
+        StartCoroutine(CShake(duration, amount));
     }
 
     public IEnumerator CShake(float duration, float amount)

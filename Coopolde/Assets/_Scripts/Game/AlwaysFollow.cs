@@ -11,13 +11,36 @@ public class AlwaysFollow : MonoBehaviour
     [SerializeField]
     private Transform targetToFollow;
 
+    [SerializeField]
+    private Transform fallBackTarget;
+
+    private bool gameOver = false;
+
     private Vector3 currentVelocity;
+
+    private void OnEnable()
+    {
+        EventManager.StartListening(GameData.Event.GameOver, GameOver);
+        gameOver = false;
+    }
+
+    private void GameOver()
+    {
+        gameOver = true;
+    }
 
     private void FixedUpdate()
     {
-        // Move to desired position
-        Vector3 desiredPosition = new Vector3(targetToFollow.position.x, transform.position.y, targetToFollow.position.z);
+        Vector3 desiredPosition;
+        if (!gameOver)
+            desiredPosition = new Vector3(targetToFollow.position.x, transform.position.y, targetToFollow.position.z);
+        else
+            desiredPosition = new Vector3(fallBackTarget.position.x, transform.position.y, fallBackTarget.position.z);
         transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref currentVelocity, smoothTime);
-        //posLisener = transform.position;    //change listenerPosition
+    }
+
+    private void OnDisable()
+    {
+        EventManager.StopListening(GameData.Event.GameOver, GameOver);
     }
 }

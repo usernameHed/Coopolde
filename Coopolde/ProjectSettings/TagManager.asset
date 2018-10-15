@@ -10,6 +10,7 @@ TagManager:
   - Colliders
   - Entity
   - OnlyIA
+  - Hurt
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - Lamp
   - Object
   - OnlyIA
-  - 
+  - Hurt
   - 
   - 
   - 

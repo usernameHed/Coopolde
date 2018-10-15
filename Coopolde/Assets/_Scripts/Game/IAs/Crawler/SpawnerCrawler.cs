@@ -21,6 +21,11 @@ public class SpawnerCrawler : MonoBehaviour
 
     private FrequencyCoolDown timerSpawn = new FrequencyCoolDown();
 
+    private void OnEnable()
+    {
+        EventManager.StartListening(GameData.Event.GameOver, GameOver);
+    }
+
     private void Start()
     {
         timerSpawn.StartCoolDown(Random.Range(minTime, maxTime));
@@ -47,5 +52,16 @@ public class SpawnerCrawler : MonoBehaviour
             timerSpawn.StartCoolDown(Random.Range(minTime, maxTime));
             Debug.Log("Spawner !!");
         }
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("game over !!");
+        gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.StopListening(GameData.Event.GameOver, GameOver);
     }
 }

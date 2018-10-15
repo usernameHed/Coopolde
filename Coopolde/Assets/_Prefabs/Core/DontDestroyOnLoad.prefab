@@ -360,7 +360,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c6dbf5774bea124e8b6136842b04280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pools: []
+  pools:
+  - tag: 0
+    prefab: {fileID: 1551932104604348, guid: 08ad5b94817038a44a07f56bc17f73a3, type: 2}
+    size: 30
+    shouldExpand: 1
 --- !u!114 &114444371402146762
 MonoBehaviour:
   m_ObjectHideFlags: 1

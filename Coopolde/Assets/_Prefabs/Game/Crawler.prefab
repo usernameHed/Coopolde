@@ -23,10 +23,27 @@ GameObject:
   - component: {fileID: 23013919666967626}
   - component: {fileID: 135021392284498032}
   - component: {fileID: 54928438292934264}
-  - component: {fileID: 114253453423227768}
   m_Layer: 12
   m_Name: Sphere
   m_TagString: Entity
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1088353287037488
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4420950966708366}
+  - component: {fileID: 114325432783361564}
+  - component: {fileID: 114687797104914396}
+  - component: {fileID: 135980942393190252}
+  m_Layer: 14
+  m_Name: Hurt
+  m_TagString: Hurt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +121,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1470048803300158}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.98, y: 2, z: 0}
+  m_LocalPosition: {x: 23.57, y: 2, z: 0.26}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4802224015830430}
@@ -126,6 +143,19 @@ Transform:
   m_Father: {fileID: 4802224015830430}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!4 &4420950966708366
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1088353287037488}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4802224015830430}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4755911958129014
 Transform:
   m_ObjectHideFlags: 1
@@ -163,6 +193,7 @@ Transform:
   m_LocalScale: {x: 0.28566, y: 0.28566, z: 0.28566}
   m_Children:
   - {fileID: 4205243140780976}
+  - {fileID: 4420950966708366}
   m_Father: {fileID: 4170497330042192}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -240,18 +271,21 @@ MonoBehaviour:
   timeOfDeath: 0.5
   refToFollow: {fileID: 0}
   isDying: 0
---- !u!114 &114253453423227768
+--- !u!114 &114325432783361564
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1059467474530158}
+  m_GameObject: {fileID: 1088353287037488}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9858ef4f147df4c44a82002041474cdf, type: 3}
+  m_Script: {fileID: 11500000, guid: c1bd6fa6c601a254e9e74b7269ece7f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CucaController: {fileID: 0}
+  hurtAmount: 1
+  hurtOnlyPlayer: 1
+  coolDown:
+    timeCoolDown: 0.5
 --- !u!114 &114432804954989546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -264,8 +298,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pc: {fileID: 114009947548170784}
-  speed: 3000
+  speed: 1000
   speedMultiplyer: 1
+--- !u!114 &114687797104914396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1088353287037488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b29b4d598f75db41a864e74aeb5fa83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectKillable: {fileID: 1470048803300158}
+  shake: 0
+  isPlayer: 0
+  vibration:
+    vibrateLeft: 0
+    strenthLeft: 0
+    durationLeft: 0
+    vibrateRight: 0
+    strenthRight: 0
+    durationRight: 0
+  lifeMax: 10
+  currentLife: 10
 --- !u!114 &114976621198887836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -292,6 +349,18 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &135980942393190252
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1088353287037488}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.88
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &212192888507840990
 SpriteRenderer:

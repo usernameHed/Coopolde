@@ -12,6 +12,8 @@ public class CoopoldeManager : SingletonMono<CoopoldeManager>
 
     public GameObject GetTarget()
     {
+        if (!me)
+            return (null);
         return (me.rb.gameObject);
     }
 }
