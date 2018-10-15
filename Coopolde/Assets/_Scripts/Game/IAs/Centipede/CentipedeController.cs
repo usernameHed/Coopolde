@@ -46,12 +46,11 @@ public class CentipedeController : EntityController, IKillable
 
     public override void Init()
     {
-        enabledScript = true;               //active this script at start
-
         rb.transform.localPosition = Vector3.zero;
         isDying = false;
 
-        enabledScript = true;
+        refToFollow = CoopoldeManager.Instance.GetTarget();
+
         isAttacking = false;
 
         isWalking = false;

@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114618890181401338}
   - component: {fileID: 114230444614623666}
   m_Layer: 12
-  m_Name: Cucaracha
+  m_Name: Centipede
   m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
