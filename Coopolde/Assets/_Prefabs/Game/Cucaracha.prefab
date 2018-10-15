@@ -36,9 +36,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4041798301342918}
   - component: {fileID: 114968930353594208}
+  - component: {fileID: 114141623219073364}
   - component: {fileID: 114618890181401338}
   - component: {fileID: 114230444614623666}
-  - component: {fileID: 114141623219073364}
   m_Layer: 12
   m_Name: Cucaracha
   m_TagString: Entity
@@ -98,6 +98,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1937399781604954
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4268462649361538}
+  - component: {fileID: 135919502452597248}
+  - component: {fileID: 114982213362242776}
+  m_Layer: 13
+  m_Name: TriggerOnlyIA-Me
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4041798301342918
 Transform:
   m_ObjectHideFlags: 1
@@ -105,7 +122,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1462658937139620}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.4000015, y: 2, z: 0}
+  m_LocalPosition: {x: -7.47, y: 2, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4690248279150106}
@@ -125,8 +142,21 @@ Transform:
   - {fileID: 4545718038411862}
   - {fileID: 4525212469563862}
   m_Father: {fileID: 4690248279150106}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!4 &4268462649361538
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1937399781604954}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4690248279150106}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4525212469563862
 Transform:
   m_ObjectHideFlags: 1
@@ -163,6 +193,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.28566, y: 0.28566, z: 0.28566}
   m_Children:
+  - {fileID: 4268462649361538}
   - {fileID: 4221507228278386}
   m_Father: {fileID: 4041798301342918}
   m_RootOrder: 0
@@ -235,15 +266,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31d68ad79ce25974f9b3e057a4e20686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cuca: {fileID: 114968930353594208}
-  state: 0
   timeGettingAngry:
     timeCoolDown: 1
+  timeLoseInterestWhenAttacking:
+    timeCoolDown: 4
+  cuca: {fileID: 114968930353594208}
+  state: 0
   frequency:
     updateFrequency: 0.05
     notTheFirstTime: 0
     waitOnlyOnce: 0
   isGettingAngry: 0
+  iaIsAttackingForward: 0
 --- !u!114 &114189765356525886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -284,6 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pc: {fileID: 114968930353594208}
   speed: 3000
+  speedMultiplyer: 1
 --- !u!114 &114968930353594208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -298,17 +333,29 @@ MonoBehaviour:
   playerMove: {fileID: 114618890181401338}
   entityTurn: {fileID: 114230444614623666}
   rb: {fileID: 54980964494248530}
-  refToFollow: {fileID: 0}
-  iaCentiped: {fileID: 114141623219073364}
-  rotationSpeed: 500
   magnitudeRun: 0.4
   timeOfDeath: 0.5
   speedTurnOnWall: 1.5
   speedMoveOnWall: 5
+  refToFollow: {fileID: 0}
+  iaCentiped: {fileID: 114141623219073364}
   isAttacking: 0
   isWalking: 0
   isRunning: 0
+  isMeInsideUs: 0
   isDying: 0
+--- !u!114 &114982213362242776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1937399781604954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5186f021864a1458fb9fc70c87d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CucaController: {fileID: 114968930353594208}
 --- !u!135 &135493345216617556
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -320,6 +367,18 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &135919502452597248
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1937399781604954}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &212025188436450674
 SpriteRenderer:

@@ -9,6 +9,7 @@ TagManager:
   - triggerWalls
   - Colliders
   - Entity
+  - OnlyIA
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Wall
   - Lamp
   - Object
-  - 
+  - OnlyIA
   - 
   - 
   - 

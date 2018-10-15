@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EntityTurn : MonoBehaviour
 {
-    [SerializeField]
+    [FoldoutGroup("GamePlay"), SerializeField]
     private float turnRate = 5f;
 
     [SerializeField]
