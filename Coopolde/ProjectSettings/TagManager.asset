@@ -10,6 +10,7 @@ TagManager:
   - Colliders
   - Entity
   - OnlyIA
+  - Button
   layers:
   - Default
   - TransparentFX
