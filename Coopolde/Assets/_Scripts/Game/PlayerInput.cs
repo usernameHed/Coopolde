@@ -14,10 +14,10 @@ public class PlayerInput : MonoBehaviour
     public float Horiz { get { return (horiz); } }
     private float verti;    //input verti
     public float Verti { get { return (verti); } }
-    private bool jumpInput; //jump input
-    public bool JumpInput { get { return (jumpInput); } }
-    private bool jumpUpInput; //jump input
-    public bool JumpUpInput { get { return (jumpUpInput); } }
+    private bool fireA; //jump input
+    public bool FireInput { get { return (fireA); } }
+    private bool fireUpA; //jump input
+    public bool FireUpInput { get { return (fireUpA); } }
 
     private bool gripInput; //grip input hold
     public bool GripInput { get { return (gripInput); } }
@@ -69,8 +69,8 @@ public class PlayerInput : MonoBehaviour
         horiz = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetAxis("Move Horizontal");
         verti = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetAxis("Move Vertical");
 
-        jumpInput = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButton("FireA");
-        jumpUpInput = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButtonUp("FireA");
+        fireA = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButton("FireA");
+        fireUpA = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButtonUp("FireA");
 
         gripInput = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButton("FireX") || PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButton("FireY");
         gripUpInput = PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButtonUp("FireX") || PlayerConnected.Instance.GetPlayer(playerController.idPlayer).GetButtonUp("FireY");

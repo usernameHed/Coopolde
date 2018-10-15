@@ -7,6 +7,8 @@ TagManager:
   - lock
   - wall
   - triggerWalls
+  - Colliders
+  - Entity
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - Player
   - Wall
   - Lamp
-  - 
+  - Object
   - 
   - 
   - 
