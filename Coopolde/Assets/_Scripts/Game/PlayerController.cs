@@ -26,10 +26,7 @@ public class PlayerController : EntityController
         MoveEntity(playerInput.GetDirInput());
     }
 
-    /// <summary>
-    /// handle input
-    /// </summary>
-    private void Update()
+    protected void Turn()
     {
         if (!enabledScript)
             return;

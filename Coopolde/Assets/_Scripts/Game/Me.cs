@@ -34,6 +34,7 @@ public class Me : PlayerController
 
     private void Update()
     {
+        base.Turn();
         InputMe();
     }
 }

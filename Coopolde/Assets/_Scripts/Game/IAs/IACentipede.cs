@@ -19,13 +19,26 @@ public class IACentipede : MonoBehaviour
     private bool isPasive = true;
     public bool isGettingAngry = false;
 
-    private void IsAttacking()
+    /// <summary>
+    /// test if centipede have to get
+    /// </summary>
+    private void TestToSetAttacking()
     {
         if (isPasive && cuca.isAttacking == true)
         {
+            //ici on passe en état ANGRY
             isPasive = false;
             isGettingAngry = true;
             timeGettingAngry.StartCoolDown();
+        }
+    }
+
+    private void TestToAttack()
+    {
+        if (!isPasive && isGettingAngry && timeGettingAngry.IsStartedAndOver())
+        {
+            isGettingAngry = false;
+            //ICI passe en état ATTACK
         }
     }
 
@@ -45,7 +58,8 @@ public class IACentipede : MonoBehaviour
         Vector3 vectDir;
         Vector2 stopVect;
 
-        IsAttacking();
+        TestToSetAttacking();
+        TestToAttack();
 
         float x, y;
 
