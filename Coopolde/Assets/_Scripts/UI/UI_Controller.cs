@@ -14,13 +14,18 @@ public class UI_Controller : MonoBehaviour {
 
     [SerializeField] private float maxAngle;
 
+    private float angle;
 
-    [SerializeField] private float selectAngle;
-    [SerializeField] private float playPos;
-    [SerializeField] private float creditPos;
-    [SerializeField] private float quitPos;
+    private AudioSelector audio;
+    private AudioSource lightOn;
 
-    [SerializeField] private float angle;
+    private void Start()
+    {
+
+        audio = GetComponent<AudioSelector>();
+
+        //lightOn.Pause();
+    }
 
     // Update is called once per frame
     void Update () 
@@ -45,8 +50,12 @@ public class UI_Controller : MonoBehaviour {
 
     private void SwitchLight()
     {
+        lightOn = audio.Play("LightOn");
         lightState = !lightState;
         redLight.SetActive(!fireA);
         whiteLight.SetActive(fireA);
+
+        if (!lightState) lightOn.Play();
+        else lightOn.Pause();
     }
 }
