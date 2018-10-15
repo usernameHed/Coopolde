@@ -3,15 +3,63 @@ guid: 3c83289a2d250d34b94b3e2ae7161da1
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: Material
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cube
+    100000: Armature
+    100002: Armature_001
+    100004: Bone
+    100006: Bone_0
+    100008: Bone_001
+    100010: Bone_002
+    100012: Bone_2
+    100014: Bone_3
+    100016: //RootNode
+    100018: Cone
+    100020: Cone_001
+    100022: Cube
+    100024: Cube_001
+    100026: Cube_002
+    100028: Sphere_000
+    100030: Sphere_001
+    400000: Armature
+    400002: Armature_001
+    400004: Bone
+    400006: Bone_0
+    400008: Bone_001
+    400010: Bone_002
+    400012: Bone_2
+    400014: Bone_3
+    400016: //RootNode
+    400018: Cone
+    400020: Cone_001
+    400022: Cube
+    400024: Cube_001
+    400026: Cube_002
+    400028: Sphere_000
+    400030: Sphere_001
+    2100000: unnamed
+    2100002: Material
+    2300000: Cone
+    2300002: Cone_001
+    2300004: Cube
+    2300006: Sphere_000
+    2300008: Sphere_001
+    3300000: Cone
+    3300002: Cone_001
+    3300004: Cube
+    3300006: Sphere_000
+    3300008: Sphere_001
+    4300000: Cube_001
+    4300002: Cone
+    4300004: Cube
+    4300006: Sphere_001
+    4300008: Cone_001
+    4300010: Sphere_000
+    4300012: Cube_002
     7400000: Default Take
+    7400002: Armature_001Action
+    7400004: ArmatureAction
     9500000: //RootNode
-    2186277476908879412: ImportLogs
+    13700000: Cube_001
+    13700002: Cube_002
   externalObjects: {}
   materials:
     importMaterials: 1

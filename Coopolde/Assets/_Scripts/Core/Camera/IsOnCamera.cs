@@ -8,13 +8,7 @@ using UnityEngine.UI;
 public class IsOnCamera : MonoBehaviour
 {
     [SerializeField]
-    private bool onEnableAdd = true;
-
-    [SerializeField]
-    private bool onDisableRemove = true;
-
-    [SerializeField]
-	private FrequencyTimer updateTimer = new FrequencyTimer(1.0F);
+	private FrequencyTimer updateTimer = new FrequencyTimer(1.0f);
 
 	[SerializeField]
 	private float xMargin;
@@ -31,15 +25,7 @@ public class IsOnCamera : MonoBehaviour
     public float interneBorder = 0.2f;
 
     [ShowInInspector, ReadOnly]
-    private Image objectRendererUI;
-    [ShowInInspector, ReadOnly]
-    private Renderer objectRenderer;
-
-    [ShowInInspector, ReadOnly]
     private Camera cam;
-
-    [SerializeField]
-    private CameraSplago cameraController;
 
     private Vector3 bounds;
 
@@ -55,12 +41,6 @@ public class IsOnCamera : MonoBehaviour
     private void TryToGetCam()
     {
         cam = GameManager.Instance.CameraMain;
-        objectRendererUI = GetComponent<Image>();
-        objectRenderer = GetComponent<Renderer>();
-        if (objectRenderer)
-            bounds = objectRenderer.bounds.extents;
-        if (objectRendererUI)
-            bounds = objectRendererUI.sprite.bounds.extents;
     }
 
 	/// <summary>
@@ -68,11 +48,9 @@ public class IsOnCamera : MonoBehaviour
 	/// <summary>
 	private void CheckOnCamera()
 	{
-		if (!cam || (objectRendererUI == null && objectRenderer == null))
+		if (!cam)
 		{
             TryToGetCam();
-            if (!cam || (objectRendererUI == null && objectRenderer == null))
-                return;
 		}
 
 		Vector3 bottomCorner = cam.WorldToViewportPoint(gameObject.transform.position - bounds);
@@ -84,44 +62,7 @@ public class IsOnCamera : MonoBehaviour
 
     }
 
-
-    public void AddTarget()
-    {
-        cameraController.AddTarget(this);
-    }
-
-    public void RemoveTarget()
-    {
-        if (cameraController)
-        {
-            cameraController.RemoveTarget(this);
-        }
-    }
-
     // Unity functions
-    private void OnEnable()
-    {
-        if (onEnableAdd)
-        {
-            AddTarget();
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (onDisableRemove)
-        {
-            RemoveTarget();
-        }
-    }
-
-    private void OnDestroy()
-    {
-        RemoveTarget();
-    }
-
-    // Unity functions
-
     private void Update()
     {
 		if (updateTimer.Ready())
