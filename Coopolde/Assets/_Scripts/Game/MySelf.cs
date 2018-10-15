@@ -10,7 +10,7 @@ public class MySelf : PlayerController
     [SerializeField]
     private Me me;
     [SerializeField]
-    private TriggerLamp triggerLamp;
+    private TriggerIA triggerLamp;
 
     [SerializeField]
     private GameObject redLamp;
@@ -37,19 +37,14 @@ public class MySelf : PlayerController
         whiteLamp.SetActive(lampActived);
         triggerLamp.gameObject.SetActive(lampActived);
     }
-
+    /*
     /// <summary>
     /// action when a centiped is in lamp
     /// </summary>
     public void CentipedeInLamp(CentipedeController centi)
     {
-        //si le centipede n'est pas en train d'attaquer...
-        if (!centi.isAttacking)
-        {
-            centi.isAttacking = true;
-            Debug.Log(centi.gameObject.name);
-        }
-    }
+        Debug.Log("centiped inside MySelf");
+    }*/
 
     private void InputMySelf()
     {

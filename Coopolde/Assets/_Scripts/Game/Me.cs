@@ -31,6 +31,15 @@ public class Me : PlayerController
             SetRunning(false);
         }
     }
+    /*
+    /// <summary>
+    /// action when a centiped is in lamp
+    /// </summary>
+    public void CentipedeInLamp(CentipedeController centi)
+    {
+        Debug.Log("centiped inside Me");
+    }
+    */
 
     private void Update()
     {
