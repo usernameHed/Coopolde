@@ -84,6 +84,9 @@ public class CrawlerController : EntityController, IKillable
         isDying = true;
         entityTurn.SetDirection(dirCura, true);
 
+        //TODO: son quand lle joueur meurt
+        SoundManager.GetSingleton.PlaySound("CrawlerDie");
+
         StartCoroutine(RealyKill());
     }
 

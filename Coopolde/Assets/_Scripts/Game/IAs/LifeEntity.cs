@@ -13,6 +13,8 @@ public class LifeEntity : MonoBehaviour
     public bool isPlayer = false;
     [SerializeField]
     private Vibration vibration;
+    [SerializeField]
+    private string soundToPlayHit;
 
     private IKillable killable;
 
@@ -45,10 +47,9 @@ public class LifeEntity : MonoBehaviour
             CameraOrthoShake.Instance.CShake(2f, 1000f);
             //            ScreenShake.Instance.ShakeCamera();
         }
-        if (isPlayer)
-        {
-            SoundManager.GetSingleton.PlaySound("Bonus");
-        }
+
+        //son quand on est touché
+        SoundManager.GetSingleton.PlaySound(soundToPlayHit);
 
 
         ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.ParticleBump, transform.position, transform.rotation, ObjectsPooler.Instance.transform);
