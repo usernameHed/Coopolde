@@ -35,3 +35,13 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+#mac
+*FMODStudioSettings.asset
+*FMODStudioCache.asset
+*FMODStudioCache.asset.meta
+*StreamingAssets/*.bank
+*fmod.log
+*fmod_editor.log
+*.log
+Coopolde/Assets/FMODStudioCache.asset

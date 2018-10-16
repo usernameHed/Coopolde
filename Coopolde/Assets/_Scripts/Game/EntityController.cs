@@ -35,7 +35,7 @@ public class EntityController : MonoBehaviour
     /// <summary>
     /// called when the game is over: desactive player
     /// </summary>
-    private void GameOver()
+    public virtual void GameOver()
     {
         Debug.Log("game over !!");
         enabledScript = false;

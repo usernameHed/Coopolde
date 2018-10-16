@@ -5,17 +5,31 @@ using UnityEngine;
 
 public class MySelf : PlayerController
 {
+    //[SerializeField]
+    //private LightDecrease lightDecrease;
+
     [SerializeField, ReadOnly]
-    private bool lampActived = false;
+    public bool lampActived = false;
     [SerializeField]
     private Me me;
     [SerializeField]
     private TriggerIA triggerLamp;
+    [SerializeField]
+    private Transform targetLose;
+    [SerializeField]
+    private Transform FollowSmooth;
 
     [SerializeField]
     private GameObject redLamp;
     [SerializeField]
     private GameObject whiteLamp;
+
+    private bool gameIsOver = false;
+
+    private void OnEnable()
+    {
+        EventManager.StartListening(GameData.Event.GameOver, GameOver);
+    }
 
     private void Start()
     {
@@ -24,6 +38,7 @@ public class MySelf : PlayerController
 
     public override void Init()
     {
+        gameIsOver = false;
         ActiveLamp(false);
     }
 
@@ -32,6 +47,7 @@ public class MySelf : PlayerController
     /// </summary>
     public void ActiveLamp(bool active)
     {
+        SoundManager.GetSingleton.PlaySound("LightOn",!active);
         lampActived = active;
         redLamp.SetActive(!lampActived);
         whiteLamp.SetActive(lampActived);
@@ -50,6 +66,14 @@ public class MySelf : PlayerController
     {
         if (me.playerInput.FireInput && !lampActived)
         {
+            if (gameIsOver)
+            {
+                //ici on peut activer la lampe, mais je jeu est fini
+                //TODO: dimiuer l'objet GameOver
+                InitLocal.Instance.Previous();
+                return;
+            }
+
             ActiveLamp(true);
         }
         else if (lampActived && !me.playerInput.FireInput)
@@ -61,5 +85,19 @@ public class MySelf : PlayerController
     private void Update()
     {
         InputMySelf();
+    }
+
+    public override void GameOver()
+    {
+        Debug.Log("game over !!");
+        enabledScript = false;
+        gameIsOver = true;
+        //FollowSmooth.SetParent(null);
+        rb.transform.position = targetLose.position;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.StopListening(GameData.Event.GameOver, GameOver);
     }
 }

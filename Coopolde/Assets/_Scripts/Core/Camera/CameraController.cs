@@ -101,7 +101,7 @@ public class CameraController : MonoBehaviour
     /// </summary>
     private void GameOver()
     {
-        Invoke("FallBack", timeBeforeFallBack);
+        //Invoke("FallBack", timeBeforeFallBack);
     }
 
     /// <summary>
@@ -112,6 +112,7 @@ public class CameraController : MonoBehaviour
         CancelInvoke("FallBack");
     }
 
+    [Button]
     private void FallBack()
     {
         fallBack = true;
@@ -174,7 +175,13 @@ public class CameraController : MonoBehaviour
     /// </summary>
     private void FindAveragePosition()
     {
-		// Final position
+        if (fallBack)
+        {
+            averageTargetPosition = fallBackTarget.position;
+            return;
+        }
+
+        // Final position
         Vector3 averagePos = new Vector3();
 		int activeTargetAmount = 0;
         float minX = 0; 
@@ -246,6 +253,12 @@ public class CameraController : MonoBehaviour
 
     private void FindWeightPosition()
     {
+        if (fallBack)
+        {
+            averageTargetPosition = fallBackTarget.position;
+            return;
+        }
+
         // Final position
         Vector3 averagePos = new Vector3();
         int activeTargetAmount = 0;

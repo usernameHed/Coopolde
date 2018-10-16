@@ -7,17 +7,17 @@ using UnityEngine;
 using System.Collections;
 using Sirenix.OdinInspector;
 
-public class ScreenShake : MonoBehaviour
+public class ScreenShake : SingletonMono<ScreenShake>
 {
 
     [FoldoutGroup("GamePlay"), OnValueChanged("ShakeCamera"), Tooltip("est-on un sith ?"), SerializeField]
     public bool debugMode = false;//Test-run/Call ShakeCamera() on start
 
-    public float shakeAmountValue;//The amount to shake this frame.
-    public float shakeDurationValue;//The duration this frame.
+    public float shakeAmountValue = 0.7f;//The amount to shake this frame.
+    public float shakeDurationValue = 0.015f;//The duration this frame.
 
-    public float shakeAmount;//The amount to shake this frame.
-    public float shakeDuration;//The duration this frame.
+    public float shakeAmount = 0.7f;//The amount to shake this frame.
+    public float shakeDuration = 0.015f;//The duration this frame.
 
     //Readonly values...
     float shakePercentage;//A percentage (0-1) representing the amount of shake to be applied when setting rotation.

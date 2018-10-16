@@ -8,6 +8,9 @@ public class CrawlerController : EntityController, IKillable
     [FoldoutGroup("GamePlay"), SerializeField]
     private float timeOfDeath = 0.5f;
 
+    [FoldoutGroup("GamePlay"), SerializeField]
+    private FrequencyCoolDown stunTime;
+
     [SerializeField]
     public GameObject refToFollow = null;
 
@@ -37,6 +40,9 @@ public class CrawlerController : EntityController, IKillable
     /// </summary>
     private void TurnPlayer()
     {
+        if (!refToFollow)
+            return;
+
         dirCura = refToFollow.transform.position - rb.transform.position;
         entityTurn.SetDirection(new Vector2(dirCura.x, dirCura.z), false);
     }
@@ -54,7 +60,7 @@ public class CrawlerController : EntityController, IKillable
     /// </summary>
     private void Update()
     {
-        if (!enabledScript)
+        if (!enabledScript || !stunTime.IsReady())
             return;
         TurnPlayer();
     }
@@ -64,7 +70,7 @@ public class CrawlerController : EntityController, IKillable
     /// </summary>
     private void FixedUpdate()
     {
-        if (!enabledScript || isDying)
+        if (!enabledScript || isDying || !stunTime.IsReady())
             return;
         MovePlayer();
     }
@@ -79,6 +85,11 @@ public class CrawlerController : EntityController, IKillable
         entityTurn.SetDirection(dirCura, true);
 
         StartCoroutine(RealyKill());
+    }
+
+    public void GetHit(int hurt)
+    {
+        stunTime.StartCoolDown();
     }
 
     private IEnumerator RealyKill()

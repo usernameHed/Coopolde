@@ -444,6 +444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothTime: 0.1
   targetToFollow: {fileID: 4082318980459124}
+  fallBackTarget: {fileID: 0}
 --- !u!114 &114138016703158906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -505,6 +506,8 @@ MonoBehaviour:
   lampActived: 0
   me: {fileID: 0}
   triggerLamp: {fileID: 114847813074206738}
+  targetLose: {fileID: 0}
+  FollowSmooth: {fileID: 4081283408033572}
   redLamp: {fileID: 1368646255384820}
   whiteLamp: {fileID: 1741154378150958}
 --- !u!114 &114992127929276624

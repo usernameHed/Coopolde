@@ -15,12 +15,9 @@ public class UI_Controller : MonoBehaviour {
     [SerializeField] private float maxAngle;
 
 
-    [SerializeField] private float selectAngle;
-    [SerializeField] private float playPos;
-    [SerializeField] private float creditPos;
-    [SerializeField] private float quitPos;
 
-    [SerializeField] private float angle;
+    private float angle;
+
 
     // Update is called once per frame
     void Update () 
@@ -29,7 +26,7 @@ public class UI_Controller : MonoBehaviour {
 
         if((horiz < 0 && angle < -maxAngle) || (horiz > 0 && angle > maxAngle) )
         {
-            //t'es au max bébé ;)
+            //bouge pas t'es au max bébé ;)
         }
         else
         {
@@ -46,6 +43,7 @@ public class UI_Controller : MonoBehaviour {
     private void SwitchLight()
     {
         lightState = !lightState;
+        SoundManager.GetSingleton.PlaySound("LightOn", !lightState);
         redLight.SetActive(!fireA);
         whiteLight.SetActive(fireA);
     }
