@@ -43,3 +43,5 @@ sysinfo.txt
 *StreamingAssets/*.bank
 *fmod.log
 *fmod_editor.log
+*.log
+Coopolde/Assets/FMODStudioCache.asset

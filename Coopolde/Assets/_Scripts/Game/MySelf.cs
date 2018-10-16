@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class MySelf : PlayerController
 {
+    //[SerializeField]
+    //private LightDecrease lightDecrease;
+
     [SerializeField, ReadOnly]
-    private bool lampActived = false;
+    public bool lampActived = false;
     [SerializeField]
     private Me me;
     [SerializeField]
@@ -60,8 +63,6 @@ public class MySelf : PlayerController
 
     private void InputMySelf()
     {
-        
-
         if (me.playerInput.FireInput && !lampActived)
         {
             if (gameIsOver)

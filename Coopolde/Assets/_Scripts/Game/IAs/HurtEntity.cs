@@ -31,7 +31,7 @@ public class HurtEntity : MonoBehaviour
                 return;
 
             coolDown.StartCoolDown();
-            life.Hit(hurtAmount);
+            life.GetHit(hurtAmount);
         }
     }
 

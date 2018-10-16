@@ -13,14 +13,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114677495649080100}
-  - {fileID: 114127606200344184}
+  - {fileID: 114745127272378554}
   EditorEvents:
   - {fileID: 114391602445591218}
   - {fileID: 114499310208458284}
   - {fileID: 114232273063208740}
-  MasterBankRef: {fileID: 114127606200344184}
+  MasterBankRef: {fileID: 114745127272378554}
   StringsBankRef: {fileID: 114677495649080100}
-  stringsBankWriteTime: 636752988380000000
+  stringsBankWriteTime: 636752994262563263
   cacheVersion: 2
 --- !u!114 &114055864579475040
 MonoBehaviour:
@@ -140,7 +140,7 @@ MonoBehaviour:
   Path: event:/Music/AMBIENCE_Under_Water_Deep_Dark_loop_stereo
   guid: 10b987ab133d2e4c920be56aa4b2122f
   Banks:
-  - {fileID: 114127606200344184}
+  - {fileID: 114745127272378554}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -270,7 +270,7 @@ MonoBehaviour:
   Path: event:/Music/BackgroundMusic
   guid: f0ddf0f136ac5048847a7e2e373f0eb1
   Banks:
-  - {fileID: 114127606200344184}
+  - {fileID: 114745127272378554}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -334,7 +334,7 @@ MonoBehaviour:
   Path: event:/SFX/LightOn
   guid: 42bde6e9f83fca4dbe01d041d9000cd5
   Banks:
-  - {fileID: 114127606200344184}
+  - {fileID: 114745127272378554}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -491,8 +491,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: Assets/StreamingAssets/ReadyToGo/Build/Desktop/Master Bank.strings.bank
-  lastModified: 636752988380000000
+  Path: Assets\StreamingAssets\ReadyToGo\Build\Desktop\Master Bank.strings.bank
+  lastModified: 636752994262563263
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -619,6 +619,25 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114745127272378554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: D:\Cloud\WORK\JMIN\GIT\Coopolde\Coopolde\Assets\StreamingAssets\ReadyToGo\Build\Desktop\Master
+    Bank.bank
+  lastModified: 636752994262543231
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1224864
+  Exists: 1
 --- !u!114 &114792260819524996
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -36,7 +36,7 @@ public class LifeEntity : MonoBehaviour
         }
     }
 
-    public void Hit(int hurt)
+    public void GetHit(int hurt)
     {
         currentLife -= hurt;
         Debug.Log("hit ! -" + hurt);
@@ -59,6 +59,10 @@ public class LifeEntity : MonoBehaviour
             currentLife = 0;
 
             killable.Kill();
+        }
+        else
+        {
+            killable.GetHit(hurt);
         }
 
     }

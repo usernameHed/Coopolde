@@ -693,6 +693,8 @@ MonoBehaviour:
   entityTurn: {fileID: 114976621198887836}
   rb: {fileID: 54928438292934264}
   timeOfDeath: 0.5
+  stunTime:
+    timeCoolDown: 0.7
   refToFollow: {fileID: 0}
   isDying: 0
 --- !u!114 &114325432783361564

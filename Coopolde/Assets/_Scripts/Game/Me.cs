@@ -70,6 +70,11 @@ public class Me : PlayerController, IKillable
         StartCoroutine(RealyKill());
     }
 
+    public void GetHit(int hurt)
+    {
+
+    }
+
     private IEnumerator RealyKill()
     {
         yield return new WaitForSeconds(timeOfDeath);
