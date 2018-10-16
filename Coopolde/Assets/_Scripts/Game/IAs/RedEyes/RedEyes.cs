@@ -9,6 +9,9 @@ public class RedEyes : EntityController, IKillable
     private float timeOfDeath = 0.5f;
 
     [FoldoutGroup("GamePlay"), SerializeField]
+    private IsOnCamera isOnCamera;
+
+    [FoldoutGroup("GamePlay"), SerializeField]
     private GameObject nice;
     [FoldoutGroup("GamePlay"), SerializeField]
     private GameObject bad;
@@ -44,6 +47,17 @@ public class RedEyes : EntityController, IKillable
 
     private void SetAngry()
     {
+        /*if (timerToGetAngry.IsWaiting() && !isOnCamera.isOnScreen && !isAngry)
+        {
+            Debug.Log("pause timer at: " + timerToGetAngry.GetTimer());
+            timerToGetAngry.PauseTimer();
+        }
+        else if (timerToGetAngry.IsWaiting() && isOnCamera.isOnScreen && !isAngry)
+        {
+            timerToGetAngry.PauseEnd();
+            Debug.Log("pause end at: " + timerToGetAngry.GetTimer());
+        }*/
+
         if (timerToGetAngry.IsStartedAndOver())
         {
             isAngry = true;
@@ -104,6 +118,12 @@ public class RedEyes : EntityController, IKillable
         MovePlayer();
     }
 
+    public void TryToKill()
+    {
+        if (!isAngry)
+            Kill();
+    }
+
     [Button]
     public void Kill()
     {
@@ -111,19 +131,20 @@ public class RedEyes : EntityController, IKillable
             return;
 
         isDying = true;
-        entityTurn.SetDirection(dirCura, true);
+        if (entityTurn)
+            entityTurn.SetDirection(dirCura, true);
 
         //TODO: son quand lle joueur meurt
         SoundManager.GetSingleton.PlaySound("RedEyesDie");
-
-        StartCoroutine(RealyKill());
+        Destroy(gameObject);
+        //StartCoroutine(RealyKill());
     }
 
     public void GetHit(int hurt)
     {
         //stunTime.StartCoolDown();
     }
-
+    /*
     private IEnumerator RealyKill()
     {
         yield return new WaitForSeconds(timeOfDeath);
@@ -132,4 +153,5 @@ public class RedEyes : EntityController, IKillable
         //ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.DeadCuca, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
         Destroy(gameObject);
     }
+    */
 }

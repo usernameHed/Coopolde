@@ -12,15 +12,16 @@ TagManager:
   - OnlyIA
   - Hurt
   - Button
+  - RedEye
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  -
   - Water
   - UI
-  - 
-  - 
+  -
+  -
   - lock
   - Player
   - Wall
@@ -28,23 +29,23 @@ TagManager:
   - Object
   - OnlyIA
   - Hurt
-  - Eyes
+  - RedEye
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
   m_SortingLayers:
   - name: Default
     uniqueID: 0

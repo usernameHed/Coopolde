@@ -66,15 +66,10 @@ public class MySelf : PlayerController
     {
         if (me.playerInput.FireInput && !lampActived)
         {
-            if (gameIsOver)
-            {
-                //ici on peut activer la lampe, mais je jeu est fini
-                //TODO: dimiuer l'objet GameOver
-                InitLocal.Instance.Previous();
-                return;
-            }
+            
 
             ActiveLamp(true);
+            
         }
         else if (lampActived && !me.playerInput.FireInput)
         {

@@ -11,6 +11,8 @@ public class FrequencyCoolDown
     private bool coolDownStarted = false;
 
     private float timeToGo;                                             //optimisation
+
+    private float savePause;
     /// <summary>
     /// Initialise l'optimisation
     /// </summary>
@@ -19,6 +21,16 @@ public class FrequencyCoolDown
         time = (time == -1) ? timeCoolDown : time;
         timeToGo = Time.fixedTime + time;
         coolDownStarted = true;
+    }
+
+    public void PauseTimer()
+    {
+        savePause = GetTimer();
+        timeToGo = Time.fixedTime + 999999999;
+    }
+    public void PauseEnd()
+    {
+        timeToGo = Time.fixedTime + savePause;
     }
 
     /// <summary>
