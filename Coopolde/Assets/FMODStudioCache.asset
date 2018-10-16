@@ -18,9 +18,10 @@ MonoBehaviour:
   - {fileID: 114391602445591218}
   - {fileID: 114499310208458284}
   - {fileID: 114232273063208740}
+  - {fileID: 114194902850723158}
   MasterBankRef: {fileID: 114127606200344184}
   StringsBankRef: {fileID: 114677495649080100}
-  stringsBankWriteTime: 636752988380000000
+  stringsBankWriteTime: 636753015560000000
   cacheVersion: 2
 --- !u!114 &114055864579475040
 MonoBehaviour:
@@ -97,11 +98,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: /Users/paulgaston/Documents/GitHub/Coopolde/Coopolde/Assets/StreamingAssets/ReadyToGo/Build/Desktop/Master
     Bank.bank
-  lastModified: 636752988380000000
+  lastModified: 636753015560000000
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1224864
+    Value: 1231008
   Exists: 1
 --- !u!114 &114178567262085052
 MonoBehaviour:
@@ -126,6 +127,28 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 5806
+--- !u!114 &114194902850723158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/RobotRun
+  guid: 7485f7222c951b4285a7d52d27bd6787
+  Banks:
+  - {fileID: 114127606200344184}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 543
 --- !u!114 &114232273063208740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +192,27 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 247
+--- !u!114 &114296452622079242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/RobotRun2
+  guid: de9805e15aa2d24689e68c3a93b6ec9c
+  Banks: []
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1343
 --- !u!114 &114333197610535450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,11 +536,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets/StreamingAssets/ReadyToGo/Build/Desktop/Master Bank.strings.bank
-  lastModified: 636752988380000000
+  lastModified: 636753015560000000
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 870
+    Value: 922
   Exists: 1
 --- !u!114 &114679904429224218
 MonoBehaviour:
@@ -659,6 +703,27 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 247
+--- !u!114 &114910073640427998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/RobotRun2
+  guid: de9805e15aa2d24689e68c3a93b6ec9c
+  Banks: []
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1343
 --- !u!114 &114913188885710952
 MonoBehaviour:
   m_ObjectHideFlags: 0

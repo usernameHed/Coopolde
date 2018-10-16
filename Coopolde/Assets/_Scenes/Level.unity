@@ -13204,8 +13204,8 @@ Prefab:
         type: 2}
     - target: {fileID: 114405158211845870, guid: dfb7f32e7fc14334a8640e27502e264c,
         type: 2}
-      propertyPath: PlayEvent
-      value: 0
+      propertyPath: Event
+      value: event:/SFX/RobotRun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfb7f32e7fc14334a8640e27502e264c, type: 2}

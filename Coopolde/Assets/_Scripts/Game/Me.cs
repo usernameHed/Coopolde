@@ -25,6 +25,9 @@ public class Me : PlayerController, IKillable
 
     private void SetRunning(bool run)
     {
+        SoundManager.GetSingleton.PlaySound("RobotRunStart", !run);
+        if(!run == true) SoundManager.GetSingleton.PlaySound("RobotRunEnd");
+
         isRunning = run;
         spot.SetActive(!run);
         playerMove.speedMultiplyer = (isRunning) ? runningMultiplyer : 1;

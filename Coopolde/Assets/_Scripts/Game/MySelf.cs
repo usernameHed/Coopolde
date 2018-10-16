@@ -44,6 +44,7 @@ public class MySelf : PlayerController
     /// </summary>
     public void ActiveLamp(bool active)
     {
+        SoundManager.GetSingleton.PlaySound("LightOn",!active);
         lampActived = active;
         redLamp.SetActive(!lampActived);
         whiteLamp.SetActive(lampActived);
