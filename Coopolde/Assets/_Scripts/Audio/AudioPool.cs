@@ -12,7 +12,7 @@ public class AudioPool : MonoBehaviour
 
 	private float updateCheckDelay = 1.0F;
 
-	void Start ()
+	void Awake ()
 	{
 		audioSources = new Queue<AudioSource>();
 		playingAudioSources = new List<AudioSource>();

@@ -16,16 +16,6 @@ public class UI_Controller : MonoBehaviour {
 
     private float angle;
 
-    private AudioSelector audio;
-    private AudioSource lightOn;
-
-    private void Start()
-    {
-
-        audio = GetComponent<AudioSelector>();
-
-        //lightOn.Pause();
-    }
 
     // Update is called once per frame
     void Update () 
@@ -34,7 +24,7 @@ public class UI_Controller : MonoBehaviour {
 
         if((horiz < 0 && angle < -maxAngle) || (horiz > 0 && angle > maxAngle) )
         {
-            //t'es au max bébé ;)
+            //bouge pas t'es au max bébé ;)
         }
         else
         {
@@ -50,12 +40,9 @@ public class UI_Controller : MonoBehaviour {
 
     private void SwitchLight()
     {
-        lightOn = audio.Play("LightOn");
+
         lightState = !lightState;
         redLight.SetActive(!fireA);
         whiteLight.SetActive(fireA);
-
-        if (!lightState) lightOn.Play();
-        else lightOn.Pause();
     }
 }
