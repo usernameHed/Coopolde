@@ -52,6 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4111315596378206}
   - component: {fileID: 114868605450470476}
+  - component: {fileID: 114150495286297666}
   - component: {fileID: 114992127929276624}
   - component: {fileID: 114437251930988236}
   m_Layer: 11
@@ -157,6 +158,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4257602465322470}
   - {fileID: 4781073374114520}
   - {fileID: 4800905032815200}
   m_Father: {fileID: 4111315596378206}
@@ -171,8 +173,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4257602465322470}
+  m_Children: []
   m_Father: {fileID: 4111315596378206}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -197,11 +198,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1355678203211444}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6.0543, y: 6.0543, z: 6.0543}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 7}
+  m_LocalScale: {x: 6.0543, y: 6.0543017, z: 6.0543017}
   m_Children: []
-  m_Father: {fileID: 4082318980459124}
+  m_Father: {fileID: 4081283408033572}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4584391354214240
@@ -229,7 +230,7 @@ Transform:
   m_Children:
   - {fileID: 4584391354214240}
   m_Father: {fileID: 4081283408033572}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4800905032815200
 Transform:
@@ -243,7 +244,7 @@ Transform:
   m_Children:
   - {fileID: 4817443756910962}
   m_Father: {fileID: 4081283408033572}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4817443756910962
 Transform:
@@ -416,7 +417,7 @@ Light:
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
-  m_Cookie: {fileID: 2800000, guid: cf0054ea1326c4d5a8983ff28a7d7d6b, type: 3}
+  m_Cookie: {fileID: 2800000, guid: 23e6420f3cc024d3cb578f282124d54f, type: 3}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
@@ -456,10 +457,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77833c79033abab4f9453f21c894bc0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weightTarget: 1
+  weightTarget: 2
   onEnableAdd: 1
   onDisableRemove: 1
   cameraController: {fileID: 0}
+--- !u!114 &114150495286297666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1184455894938388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1161f8dd50f21ca4f9a3fbf5b71b16e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySelf: {fileID: 114868605450470476}
+  triggerIA: {fileID: 4257602465322470}
+  lights:
+  - {fileID: 108286960406322862}
+  - {fileID: 108252335315500266}
+  lightMax: 100
+  lightMin: 10
+  speedDecrease: 30
+  speedIncrease: 100
+  lightIntensity: 100
 --- !u!114 &114437251930988236
 MonoBehaviour:
   m_ObjectHideFlags: 1
