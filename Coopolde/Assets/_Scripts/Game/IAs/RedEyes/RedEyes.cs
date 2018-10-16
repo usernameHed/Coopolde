@@ -47,6 +47,16 @@ public class RedEyes : EntityController, IKillable
 
     private void SetAngry()
     {
+        if (timerToGetAngry.IsWaiting() && !isOnCamera.isOnScreen && !timerToGetAngry.IsOnPause())
+        {
+            Debug.Log("pause timer at: " + timerToGetAngry.GetTimer());
+            timerToGetAngry.PauseTimer();
+        }
+        if (timerToGetAngry.IsOnPause() && isOnCamera.isOnScreen)
+        {
+            timerToGetAngry.PauseEnd();
+            Debug.Log("pause end at: " + timerToGetAngry.GetTimer());
+        }
         /*if (timerToGetAngry.IsWaiting() && !isOnCamera.isOnScreen && !isAngry)
         {
             Debug.Log("pause timer at: " + timerToGetAngry.GetTimer());

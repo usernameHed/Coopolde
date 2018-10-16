@@ -12,6 +12,8 @@ public class FrequencyCoolDown
 
     private float timeToGo;                                             //optimisation
 
+    private bool isOnPause = false;
+    public bool IsOnPause() { return (isOnPause); }
     private float savePause;
     /// <summary>
     /// Initialise l'optimisation
@@ -21,16 +23,19 @@ public class FrequencyCoolDown
         time = (time == -1) ? timeCoolDown : time;
         timeToGo = Time.fixedTime + time;
         coolDownStarted = true;
+        isOnPause = false;
     }
 
     public void PauseTimer()
     {
         savePause = GetTimer();
+        isOnPause = true;
         timeToGo = Time.fixedTime + 999999999;
     }
     public void PauseEnd()
     {
         timeToGo = Time.fixedTime + savePause;
+        isOnPause = false;
     }
 
     /// <summary>
@@ -99,5 +104,6 @@ public class FrequencyCoolDown
     {
         coolDownStarted = false;    //le cooldown est fini, on reset
         timeToGo = Time.fixedTime;
+        isOnPause = false;
     }
 }

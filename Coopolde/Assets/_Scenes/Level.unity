@@ -3760,7 +3760,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 980551896}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 202049b1d148f33418c8128f2e71ff16, type: 3}
   m_Name: 
@@ -7769,6 +7769,11 @@ Prefab:
       propertyPath: m_Name
       value: Me
       objectReference: {fileID: 0}
+    - target: {fileID: 114204397497319936, guid: f350a955a0b48024db6e15ec8b773522,
+        type: 2}
+      propertyPath: spot
+      value: 
+      objectReference: {fileID: 2092290071}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f350a955a0b48024db6e15ec8b773522, type: 2}
   m_IsPrefabAsset: 0
@@ -8916,6 +8921,11 @@ Transform:
   m_Father: {fileID: 1475889373}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2092290071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1785973916862390, guid: f350a955a0b48024db6e15ec8b773522,
+    type: 2}
+  m_PrefabInternal: {fileID: 1856054692}
 --- !u!1 &2093386719
 GameObject:
   m_ObjectHideFlags: 0
