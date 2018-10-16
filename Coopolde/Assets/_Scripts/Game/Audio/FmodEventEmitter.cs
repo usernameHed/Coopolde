@@ -20,21 +20,23 @@ public class FmodEventEmitter : MonoBehaviour
     /// <summary>
     /// play l'emmiter
     /// </summary>
-    public void play()
+    public void Play()
     {
         if (!gameObject || !emitter)
             return;
-        SendMessage("Play");
+        emitter.Play();
+        //SendMessage("Play");
     }
 
     /// <summary>
     /// stop l'emmiter
     /// </summary>
-    public void stop()
+    public void Stop()
     {
         if (!gameObject || !emitter)
             return;
-        SendMessage("Stop");
+        emitter.Stop();
+        //SendMessage("Stop");
     }
 
     /// <summary>

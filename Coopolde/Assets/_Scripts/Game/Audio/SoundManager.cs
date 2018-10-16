@@ -145,9 +145,9 @@ public class SoundManager : SerializedMonoBehaviour                             
         }
 
         if (!stop)
-            emitterScript.play();
+            emitterScript.Play();
         else
-            emitterScript.stop();
+            emitterScript.Stop();
     }
 
     /// <summary>
