@@ -534,11 +534,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1bd6fa6c601a254e9e74b7269ece7f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hurtAmount: 2
+  hurtAmount: 5
   hurtOnlyPlayer: 1
   isPlayer: 0
+  kamikaze: 1
+  parentToKill: {fileID: 1387396711936504}
   coolDown:
-    timeCoolDown: 0.1
+    timeCoolDown: 0.5
   timeAfterStopAttacking:
     timeCoolDown: 1
 --- !u!114 &114596258677788746
