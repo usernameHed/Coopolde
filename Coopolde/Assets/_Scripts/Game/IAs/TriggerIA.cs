@@ -8,6 +8,8 @@ public class TriggerIA : MonoBehaviour
     private MySelf mySelf;
     [SerializeField]
     private Me me;
+    [SerializeField]
+    private bool killEye = true;
 
     private void OnTriggerStay(Collider other)
     {
@@ -31,16 +33,18 @@ public class TriggerIA : MonoBehaviour
                 //lampManager.CentipedeInLamp(centi);
             }
             RedEyes redEye = other.gameObject.GetComponentInParent<RedEyes>();
-            if (redEye)
+            if (redEye && killEye)
             {
                 redEye.TryToKill();
                 return;
             }
+            /*
             SpawnRedEyes spawn = other.gameObject.GetComponentInParent<SpawnRedEyes>();
             if (spawn)
             {
                 spawn.Kill();
             }
+            */
         }
     }
 }
