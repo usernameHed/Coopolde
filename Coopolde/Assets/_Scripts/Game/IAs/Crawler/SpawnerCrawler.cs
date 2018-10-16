@@ -8,6 +8,8 @@ public class SpawnerCrawler : MonoBehaviour
     private float minTime = 2;
     [SerializeField]
     private float maxTime = 10;
+    [SerializeField]
+    private float rangeRadius = 3f;
 
     [SerializeField]
     private List<IsOnCamera> spawnPoints;
@@ -40,7 +42,10 @@ public class SpawnerCrawler : MonoBehaviour
                 spawns.Add(spawnPoints[i]);
         }
         int indexRandom = Random.Range(0, spawns.Count);
-        GameObject Crawler = Instantiate(prefabsCrawler, spawns[indexRandom].transform.position, Quaternion.identity, parentCrawlers);
+        Vector3 pos = spawns[indexRandom].transform.position;
+        pos.x = (pos.x - rangeRadius) + Random.Range(0, rangeRadius * 2);
+        pos.z = (pos.z - rangeRadius) + Random.Range(0, rangeRadius * 2);
+        GameObject Crawler = Instantiate(prefabsCrawler, pos, Quaternion.identity, parentCrawlers);
     }
 
     private void Update()
