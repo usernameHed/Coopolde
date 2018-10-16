@@ -7,7 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Acid
+<<<<<<< HEAD:Coopolde/Assets/Plugins/Smoke/Acid.mat
   m_Shader: {fileID: 10800, guid: 0000000000000000f000000000000000, type: 0}
+=======
+  m_Shader: {fileID: 202, guid: 0000000000000000f000000000000000, type: 0}
+>>>>>>> b8dc31407ea8fe31704226636116a0e8bedf744d:Coopolde/Assets/Smoke/Acid.mat
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
