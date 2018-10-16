@@ -45,6 +45,10 @@ public class LifeEntity : MonoBehaviour
             CameraOrthoShake.Instance.CShake(2f, 1000f);
             //            ScreenShake.Instance.ShakeCamera();
         }
+        if (isPlayer)
+        {
+            SoundManager.GetSingleton.PlaySound("Bonus");
+        }
 
 
         ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.ParticleBump, transform.position, transform.rotation, ObjectsPooler.Instance.transform);

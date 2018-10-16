@@ -6018,7 +6018,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4170497330042192, guid: 69436b7b181e91d43b2b6036fb49c66c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 23.57
+      value: 6.99
       objectReference: {fileID: 0}
     - target: {fileID: 4170497330042192, guid: 69436b7b181e91d43b2b6036fb49c66c, type: 2}
       propertyPath: m_LocalPosition.y
@@ -13195,6 +13195,17 @@ Prefab:
     - target: {fileID: 4217753727906640, guid: dfb7f32e7fc14334a8640e27502e264c, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114329065346248348, guid: dfb7f32e7fc14334a8640e27502e264c,
+        type: 2}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 114329065346248348, guid: dfb7f32e7fc14334a8640e27502e264c,
+        type: 2}
+    - target: {fileID: 114405158211845870, guid: dfb7f32e7fc14334a8640e27502e264c,
+        type: 2}
+      propertyPath: PlayEvent
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfb7f32e7fc14334a8640e27502e264c, type: 2}
