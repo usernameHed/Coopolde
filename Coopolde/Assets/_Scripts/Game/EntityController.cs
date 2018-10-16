@@ -37,7 +37,7 @@ public class EntityController : MonoBehaviour
     /// </summary>
     public virtual void GameOver()
     {
-        Debug.Log("game over !!");
+        //Debug.Log("game over !!");
         enabledScript = false;
     }
 

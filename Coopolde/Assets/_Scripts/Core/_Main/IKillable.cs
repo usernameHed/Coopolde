@@ -5,5 +5,5 @@ using UnityEngine;
 public interface IKillable
 {
 	void Kill();
-    void GetHit(int amount);
+    void GetHit(int amount, Vector3 posAttacker);
 }

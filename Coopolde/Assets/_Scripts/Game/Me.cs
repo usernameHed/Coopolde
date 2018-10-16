@@ -9,6 +9,9 @@ public class Me : PlayerController, IKillable
     private float runningMultiplyer = 2;
     [FoldoutGroup("GamePlay"), SerializeField]
     private float timeOfDeath = 0.5f;
+    [FoldoutGroup("GamePlay"), SerializeField]
+    private float factorRepulseHit = 5f;
+
     [SerializeField]
     private GameObject spot;
 
@@ -21,6 +24,7 @@ public class Me : PlayerController, IKillable
     private MySelf myself;
 
     private bool isDying = false;
+    private bool gameOver = false;
 
 
     private void SetRunning(bool run)
@@ -76,9 +80,10 @@ public class Me : PlayerController, IKillable
         StartCoroutine(RealyKill());
     }
 
-    public void GetHit(int hurt)
+    public void GetHit(int hurt, Vector3 posAttacker)
     {
-
+        Vector3 dir = rb.transform.position - posAttacker;
+        playerMove.Move(dir, factorRepulseHit);
     }
 
     private IEnumerator RealyKill()

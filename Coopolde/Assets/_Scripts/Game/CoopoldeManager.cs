@@ -10,6 +10,8 @@ public class CoopoldeManager : SingletonMono<CoopoldeManager>
     [SerializeField]
     private Me me;
 
+    public int difficulty = 1;
+
     public GameObject GetTarget()
     {
         if (!me)

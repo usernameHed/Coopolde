@@ -12,6 +12,7 @@ TagManager:
   - OnlyIA
   - Hurt
   - Button
+  - RedEye
   layers:
   - Default
   - TransparentFX
@@ -28,8 +29,8 @@ TagManager:
   - Object
   - OnlyIA
   - Hurt
-  - Eyes
-  - 
+  - RedEye
+  - Floor
   - 
   - 
   - 

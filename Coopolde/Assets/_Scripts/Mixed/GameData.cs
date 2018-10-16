@@ -41,6 +41,7 @@ public static class GameData
         Entity,
         OnlyIA,
         Hurt,
+        RedEye,
     }
 
     public enum Sounds

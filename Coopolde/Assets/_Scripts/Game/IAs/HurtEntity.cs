@@ -10,6 +10,10 @@ public class HurtEntity : MonoBehaviour
     private bool hurtOnlyPlayer = false;
     [SerializeField]
     private bool isPlayer = false;
+    [SerializeField]
+    private bool kamikaze = false;
+    [SerializeField]
+    private GameObject parentToKill;
 
     private bool isSomethingInside = false;
 
@@ -52,7 +56,13 @@ public class HurtEntity : MonoBehaviour
 
             //ici on tape
             coolDown.StartCoolDown();
-            life.GetHit(hurtAmount);
+            life.GetHit(hurtAmount, transform.position);
+
+            if (kamikaze)
+            {
+                parentToKill.GetComponent<IKillable>().Kill();
+                return;
+            }
         }
     }
 
