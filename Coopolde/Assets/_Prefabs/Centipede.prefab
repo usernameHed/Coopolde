@@ -3789,8 +3789,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hurtAmount: 1
   hurtOnlyPlayer: 1
+  isPlayer: 0
   coolDown:
     timeCoolDown: 0.5
+  timeAfterStopAttacking:
+    timeCoolDown: 1
 --- !u!114 &114618890181401338
 MonoBehaviour:
   m_ObjectHideFlags: 1
