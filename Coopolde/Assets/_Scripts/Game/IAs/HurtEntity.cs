@@ -71,12 +71,12 @@ public class HurtEntity : MonoBehaviour
 
         if (!playingAttackSong && isSomethingInside)
         {
-            Debug.Log("play sound attack");
+            SoundManager.GetSingleton.PlaySound("DamageOnEnemies");
             playingAttackSong = true;
         }
         else if (!isSomethingInside && playingAttackSong)
         {
-            Debug.Log("stop sound attack");
+            SoundManager.GetSingleton.PlaySound("DamageOnEnemies", true);
             playingAttackSong = false;
         }
     }

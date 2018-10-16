@@ -14,7 +14,7 @@ public class LifeEntity : MonoBehaviour
     [SerializeField]
     private Vibration vibration;
     [SerializeField]
-    private string soundToPlayHit;
+    private string onDeathSound;
 
     private IKillable killable;
 
@@ -48,8 +48,7 @@ public class LifeEntity : MonoBehaviour
             //            ScreenShake.Instance.ShakeCamera();
         }
 
-        //son quand on est touché
-        SoundManager.GetSingleton.PlaySound(soundToPlayHit);
+
 
 
         ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.ParticleBump, transform.position, transform.rotation, ObjectsPooler.Instance.transform);
@@ -58,6 +57,9 @@ public class LifeEntity : MonoBehaviour
         if (currentLife <= 0)
         {
             currentLife = 0;
+
+            //son quand on est touché
+            SoundManager.GetSingleton.PlaySound(onDeathSound);
 
             killable.Kill();
         }
