@@ -38,5 +38,8 @@ sysinfo.txt
 
 #mac
 *FMODStudioSettings.asset
+*FMODStudioCache.asset
+*FMODStudioCache.asset.meta
 *StreamingAssets/*.bank
 *fmod.log
+*fmod_editor.log
