@@ -157,7 +157,7 @@ public class CentipedeController : EntityController, IKillable
         StartCoroutine(RealyKill());
     }
 
-    public void GetHit(int hurt)
+    public void GetHit(int hurt, Vector3 posAttacker)
     {
 
     }

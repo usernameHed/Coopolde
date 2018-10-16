@@ -56,7 +56,7 @@ public class HurtEntity : MonoBehaviour
 
             //ici on tape
             coolDown.StartCoolDown();
-            life.GetHit(hurtAmount);
+            life.GetHit(hurtAmount, transform.position);
 
             if (kamikaze)
             {

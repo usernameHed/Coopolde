@@ -38,7 +38,7 @@ public class LifeEntity : MonoBehaviour
         }
     }
 
-    public void GetHit(int hurt)
+    public void GetHit(int hurt, Vector3 posAttacker)
     {
         currentLife -= hurt;
         Debug.Log("hit ! -" + hurt);
@@ -63,7 +63,7 @@ public class LifeEntity : MonoBehaviour
         }
         else
         {
-            killable.GetHit(hurt);
+            killable.GetHit(hurt, posAttacker);
         }
 
     }

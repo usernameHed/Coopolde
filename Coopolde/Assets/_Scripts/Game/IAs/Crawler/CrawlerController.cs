@@ -90,7 +90,7 @@ public class CrawlerController : EntityController, IKillable
         StartCoroutine(RealyKill());
     }
 
-    public void GetHit(int hurt)
+    public void GetHit(int hurt, Vector3 posAttacker)
     {
         stunTime.StartCoolDown();
     }

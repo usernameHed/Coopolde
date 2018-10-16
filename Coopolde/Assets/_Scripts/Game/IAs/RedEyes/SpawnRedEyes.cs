@@ -24,7 +24,7 @@ public class SpawnRedEyes : MonoBehaviour, IKillable
         }
     }
 
-    public void GetHit(int amount)
+    public void GetHit(int amount, Vector3 posAttacker)
     {
 
     }
