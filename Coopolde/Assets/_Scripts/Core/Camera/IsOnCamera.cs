@@ -16,7 +16,7 @@ public class IsOnCamera : MonoBehaviour
 	[SerializeField]
 	private float yMargin;
 
-    [ReadOnly]
+    
 	public bool isOnScreen = false;
     [ReadOnly]
     public bool IsTooMuchInside = false;

@@ -11,6 +11,8 @@ public class LightDecrease : MonoBehaviour
     [SerializeField]
     private Transform triggerIA;
     [SerializeField]
+    private Transform triggerIARed;
+    [SerializeField]
     private Light[] lights;
 
     [SerializeField, FoldoutGroup("light")]
@@ -21,12 +23,21 @@ public class LightDecrease : MonoBehaviour
     private float speedDecrease = 1f;
     [SerializeField, FoldoutGroup("light")]
     private float speedIncrease = 1f;
+    [SerializeField, FoldoutGroup("light")]
+    private float lightToGameOver = 40f;
 
     [SerializeField, FoldoutGroup("light"), ReadOnly]
     private float lightIntensity = 100;
 
     private float maxSizeTrigger;
     private float maxSizeLamp;
+
+    private bool gameIsOver = false;
+
+    private void OnEnable()
+    {
+        EventManager.StartListening(GameData.Event.GameOver, GameOver);
+    }
 
     private void Start()
     {
@@ -49,14 +60,36 @@ public class LightDecrease : MonoBehaviour
 
         float newSizeTrigger = lightIntensity * maxSizeTrigger / lightMax;
         triggerIA.localScale = new Vector3(newSizeTrigger, newSizeTrigger, newSizeTrigger);
+        triggerIARed.localScale = new Vector3(newSizeTrigger, newSizeTrigger, newSizeTrigger);
 
         float newSizeLight = lightIntensity * maxSizeLamp / lightMax;
         lights[0].spotAngle = newSizeLight;
         lights[1].spotAngle = newSizeLight;
     }
 
+    public void GameOver()
+    {
+        Debug.Log("game over !!");
+
+        gameIsOver = true;
+    }
+
+    private void TryToGameOver()
+    {
+        if (gameIsOver && lightIntensity < lightToGameOver)
+        {
+            InitLocal.Instance.Previous();
+        }
+    }
+
     private void Update()
     {
         AddOrDecrease();
+        TryToGameOver();
+    }
+
+    private void OnDisable()
+    {
+        EventManager.StopListening(GameData.Event.GameOver, GameOver);
     }
 }
