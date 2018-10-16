@@ -3245,7 +3245,7 @@ MonoBehaviour:
   idPlayer: 0
   runningMultiplyer: 2
   timeOfDeath: 0.5
-  spot: {fileID: 0}
+  spot: {fileID: 1785973916862390}
   vibration:
     vibrateLeft: 0
     strenthLeft: 0
@@ -3269,6 +3269,8 @@ MonoBehaviour:
   hurtAmount: 0
   hurtOnlyPlayer: 0
   isPlayer: 0
+  kamikaze: 0
+  parentToKill: {fileID: 0}
   coolDown:
     timeCoolDown: 0.5
   timeAfterStopAttacking:
@@ -3339,6 +3341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mySelf: {fileID: 0}
   me: {fileID: 114204397497319936}
+  killEye: 0
 --- !u!114 &114725630022019478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3368,6 +3371,8 @@ MonoBehaviour:
   hurtAmount: 2
   hurtOnlyPlayer: 0
   isPlayer: 1
+  kamikaze: 0
+  parentToKill: {fileID: 0}
   coolDown:
     timeCoolDown: 0.1
   timeAfterStopAttacking:

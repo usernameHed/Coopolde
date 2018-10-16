@@ -21,6 +21,7 @@ public class Me : PlayerController, IKillable
     private MySelf myself;
 
     private bool isDying = false;
+    private bool gameOver = false;
 
 
     private void SetRunning(bool run)

@@ -20,7 +20,7 @@ public class RedEyes : EntityController, IKillable
 
     private bool isAngry = false;
 
-    [SerializeField]
+    [ReadOnly]
     public GameObject refToFollow = null;
 
     [SerializeField, ReadOnly]
