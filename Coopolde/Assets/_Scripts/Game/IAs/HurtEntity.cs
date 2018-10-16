@@ -8,9 +8,17 @@ public class HurtEntity : MonoBehaviour
     private int hurtAmount = 1;
     [SerializeField]
     private bool hurtOnlyPlayer = false;
+    [SerializeField]
+    private bool isPlayer = false;
+
+    private bool isSomethingInside = false;
+
+    private bool playingAttackSong = false;
 
     [SerializeField]
     private FrequencyCoolDown coolDown;
+    [SerializeField]
+    private FrequencyCoolDown timeAfterStopAttacking;
 
     private void Start()
     {
@@ -20,6 +28,8 @@ public class HurtEntity : MonoBehaviour
     private void Init()
     {
         coolDown.Reset();
+        isSomethingInside = false;
+        playingAttackSong = false;
     }
 
     private void Hurt(GameObject other)
@@ -27,9 +37,20 @@ public class HurtEntity : MonoBehaviour
         LifeEntity life = other.GetComponent<LifeEntity>();
         if (life)
         {
+
+            isSomethingInside = true;
+
+            timeAfterStopAttacking.StartCoolDown();
+
             if (!life.isPlayer && hurtOnlyPlayer)
                 return;
 
+
+            //ici on a déja tapé...
+            if (!coolDown.IsReady())
+                return;
+
+            //ici on tape
             coolDown.StartCoolDown();
             life.GetHit(hurtAmount);
         }
@@ -37,10 +58,37 @@ public class HurtEntity : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag(GameData.Layers.Hurt.ToString())
-            && coolDown.IsReady())
+        if (other.gameObject.CompareTag(GameData.Layers.Hurt.ToString()))
         {
             Hurt(other.gameObject);
         }
     }
+
+    private void PlayerAttack()
+    {
+        if (!isPlayer)
+            return;
+
+        if (!playingAttackSong && isSomethingInside)
+        {
+            SoundManager.GetSingleton.PlaySound("DamageOnEnemies");
+            playingAttackSong = true;
+        }
+        else if (!isSomethingInside && playingAttackSong)
+        {
+            SoundManager.GetSingleton.PlaySound("DamageOnEnemies", true);
+            playingAttackSong = false;
+        }
+    }
+
+    private void Update()
+    {
+        PlayerAttack();
+
+        if (timeAfterStopAttacking.IsStartedAndOver())
+        {
+            isSomethingInside = false;
+        }
+    }
+
 }

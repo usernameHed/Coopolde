@@ -151,6 +151,9 @@ public class CentipedeController : EntityController, IKillable
         isDying = true;
         entityTurn.SetDirection(dirCura, true);
 
+        //TODO: son quand lle joueur meurt
+        SoundManager.GetSingleton.PlaySound("CentipedeDie");
+
         StartCoroutine(RealyKill());
     }
 

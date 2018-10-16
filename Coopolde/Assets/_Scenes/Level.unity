@@ -2640,8 +2640,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hurtAmount: 2
   hurtOnlyPlayer: 0
+  isPlayer: 1
   coolDown:
     timeCoolDown: 0.1
+  timeAfterStopAttacking:
+    timeCoolDown: 0.4
 --- !u!4 &450570012 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4041798301342918, guid: a7ca044746f1a7e498ffae7855c207e1,

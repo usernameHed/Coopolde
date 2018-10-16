@@ -70,6 +70,9 @@ public class Me : PlayerController, IKillable
 
         enabledScript = false;
 
+        //TODO: son quand lle joueur meurt
+        SoundManager.GetSingleton.PlaySound("PlayerDie");
+
         StartCoroutine(RealyKill());
     }
 

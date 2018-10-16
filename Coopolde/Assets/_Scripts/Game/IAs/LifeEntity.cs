@@ -13,6 +13,8 @@ public class LifeEntity : MonoBehaviour
     public bool isPlayer = false;
     [SerializeField]
     private Vibration vibration;
+    [SerializeField]
+    private string onDeathSound;
 
     private IKillable killable;
 
@@ -45,10 +47,8 @@ public class LifeEntity : MonoBehaviour
             CameraOrthoShake.Instance.CShake(2f, 1000f);
             //            ScreenShake.Instance.ShakeCamera();
         }
-        if (isPlayer)
-        {
-            SoundManager.GetSingleton.PlaySound("Bonus");
-        }
+
+
 
 
         ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.ParticleBump, transform.position, transform.rotation, ObjectsPooler.Instance.transform);
@@ -57,6 +57,9 @@ public class LifeEntity : MonoBehaviour
         if (currentLife <= 0)
         {
             currentLife = 0;
+
+            //son quand on est touché
+            SoundManager.GetSingleton.PlaySound(onDeathSound);
 
             killable.Kill();
         }

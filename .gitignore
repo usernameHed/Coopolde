@@ -45,3 +45,5 @@ sysinfo.txt
 *fmod_editor.log
 *.log
 Coopolde/Assets/FMODStudioCache.asset
+Coopolde/Assets/StreamingAssets/ReadyToGo/Metadata/Event/*.meta
+Coopolde/Assets/StreamingAssets/ReadyToGo/Metadata/Audiofile/*.meta
