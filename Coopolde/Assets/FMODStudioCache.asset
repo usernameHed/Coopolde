@@ -12,6 +12,26 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
+<<<<<<< HEAD
+  - {fileID: 114742464031127488}
+  - {fileID: 114784420627063694}
+  EditorEvents:
+  - {fileID: 114991173185053080}
+  - {fileID: 114896583656028520}
+  - {fileID: 114097148118213778}
+  - {fileID: 114836311285795818}
+  - {fileID: 114902760783425826}
+  - {fileID: 114127963491040180}
+  - {fileID: 114956073153346850}
+  - {fileID: 114577516699777532}
+  - {fileID: 114436067168960930}
+  - {fileID: 114511372754596468}
+  MasterBankRef: {fileID: 114784420627063694}
+  StringsBankRef: {fileID: 114742464031127488}
+  stringsBankWriteTime: 636753074330000000
+  cacheVersion: 2
+--- !u!114 &114097148118213778
+=======
   - {fileID: 114830420721297288}
   - {fileID: 114728440345710524}
   EditorEvents:
@@ -30,6 +50,7 @@ MonoBehaviour:
   stringsBankWriteTime: 636753109280302613
   cacheVersion: 2
 --- !u!114 &114052782963933936
+>>>>>>> 24dcf2a54571a81569270db179f0aa7e200095e0
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,18 +61,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  Path: event:/SFX/LightOn
+  guid: 42bde6e9f83fca4dbe01d041d9000cd5
+  Banks:
+  - {fileID: 114784420627063694}
+=======
   Path: event:/SFX/RobotRunStart
   guid: 5b4f03c3e90a4a42b516cf4ea812543f
   Banks:
   - {fileID: 114728440345710524}
+>>>>>>> 24dcf2a54571a81569270db179f0aa7e200095e0
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
+<<<<<<< HEAD
+  Length: 4570
+--- !u!114 &114127963491040180
+=======
   Length: 360
 --- !u!114 &114132248664059180
+>>>>>>> 24dcf2a54571a81569270db179f0aa7e200095e0
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -62,18 +95,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  Path: event:/SFX/RobotRunEnd
+  guid: 978a5197ccf6d249b7c6ef9c8dadebc2
+  Banks:
+  - {fileID: 114784420627063694}
+  IsStream: 0
+=======
   Path: event:/Music/AMBIENCE_Under_Water_Deep_Dark_loop_stereo
   guid: 10b987ab133d2e4c920be56aa4b2122f
   Banks:
   - {fileID: 114728440345710524}
   IsStream: 1
+>>>>>>> 24dcf2a54571a81569270db179f0aa7e200095e0
   Is3D: 0
   IsOneShot: 0
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
+<<<<<<< HEAD
+  Length: 900
+--- !u!114 &114436067168960930
+=======
   Length: 10389
 --- !u!114 &114208641042072066
+>>>>>>> 24dcf2a54571a81569270db179f0aa7e200095e0
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -84,18 +130,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  Path: event:/SFX/DamageOnPlayer
+  guid: b74db7fd55241f4e8446b38750371c3c
+  Banks:
+  - {fileID: 114784420627063694}
+=======
   Path: event:/SFX/EnemyDeath2
   guid: 283acca202942c45849fd85d629b98d7
   Banks:
   - {fileID: 114728440345710524}
+>>>>>>> 24dcf2a54571a81569270db179f0aa7e200095e0
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
+<<<<<<< HEAD
+  Length: 332
+--- !u!114 &114511372754596468
+=======
   Length: 474
 --- !u!114 &114236882230094856
+>>>>>>> 24dcf2a54571a81569270db179f0aa7e200095e0
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,7 +167,11 @@ MonoBehaviour:
   Path: event:/Music/BackgroundMusic
   guid: f0ddf0f136ac5048847a7e2e373f0eb1
   Banks:
+<<<<<<< HEAD
+  - {fileID: 114784420627063694}
+=======
   - {fileID: 114728440345710524}
+>>>>>>> 24dcf2a54571a81569270db179f0aa7e200095e0
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -117,7 +179,11 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 139546
+<<<<<<< HEAD
+--- !u!114 &114577516699777532
+=======
 --- !u!114 &114258836580815570
+>>>>>>> 24dcf2a54571a81569270db179f0aa7e200095e0
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,7 +197,11 @@ MonoBehaviour:
   Path: event:/SFX/EnemyDeath
   guid: b16fc54ee0c227429739c3ca47be0b11
   Banks:
+<<<<<<< HEAD
+  - {fileID: 114784420627063694}
+=======
   - {fileID: 114728440345710524}
+>>>>>>> 24dcf2a54571a81569270db179f0aa7e200095e0
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -139,7 +209,11 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1058
+<<<<<<< HEAD
+--- !u!114 &114742464031127488
+=======
 --- !u!114 &114284690256911932
+>>>>>>> 24dcf2a54571a81569270db179f0aa7e200095e0
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,9 +221,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  Path: Assets/StreamingAssets/ReadyToGo/Build/Desktop/Master Bank.strings.bank
+  lastModified: 636753074330000000
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1182
+  Exists: 1
+--- !u!114 &114784420627063694
+=======
   Path: event:/SFX/RobotRunEnd
   guid: 978a5197ccf6d249b7c6ef9c8dadebc2
   Banks:
@@ -162,6 +246,7 @@ MonoBehaviour:
   MaxDistance: 0
   Length: 900
 --- !u!114 &114314736824277518
+>>>>>>> 24dcf2a54571a81569270db179f0aa7e200095e0
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,9 +254,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  Path: /Users/paulgaston/Documents/GitHub/Coopolde/Coopolde/Assets/StreamingAssets/ReadyToGo/Build/Desktop/Master
+    Bank.bank
+  lastModified: 636753074330000000
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1276928
+  Exists: 1
+--- !u!114 &114836311285795818
+=======
   Path: event:/SFX/RobotRun
   guid: 7485f7222c951b4285a7d52d27bd6787
   Banks:
@@ -184,6 +280,7 @@ MonoBehaviour:
   MaxDistance: 0
   Length: 583
 --- !u!114 &114517786377405874
+>>>>>>> 24dcf2a54571a81569270db179f0aa7e200095e0
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,40 +291,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  Path: event:/SFX/RobotRunStart
+  guid: 5b4f03c3e90a4a42b516cf4ea812543f
+  Banks:
+  - {fileID: 114784420627063694}
+=======
   Path: event:/SFX/LightOn
   guid: 42bde6e9f83fca4dbe01d041d9000cd5
   Banks:
   - {fileID: 114728440345710524}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 4570
---- !u!114 &114679321427533302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/DamageOnEnemies
-  guid: 9a3bf81f31f023458926efd23c8d206c
-  Banks:
-  - {fileID: 114728440345710524}
+>>>>>>> 24dcf2a54571a81569270db179f0aa7e200095e0
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
+<<<<<<< HEAD
+  Length: 360
+--- !u!114 &114896583656028520
+=======
+  Length: 4570
+--- !u!114 &114679321427533302
+>>>>>>> 24dcf2a54571a81569270db179f0aa7e200095e0
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  Path: event:/SFX/EnemyDeath2
+  guid: 283acca202942c45849fd85d629b98d7
+  Banks:
+  - {fileID: 114784420627063694}
+=======
+  Path: event:/SFX/DamageOnEnemies
+  guid: 9a3bf81f31f023458926efd23c8d206c
+  Banks:
+  - {fileID: 114728440345710524}
+>>>>>>> 24dcf2a54571a81569270db179f0aa7e200095e0
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+<<<<<<< HEAD
+  Length: 474
+--- !u!114 &114902760783425826
+=======
   Length: 1023
 --- !u!114 &114728440345710524
+>>>>>>> 24dcf2a54571a81569270db179f0aa7e200095e0
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,6 +359,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  Path: event:/SFX/RobotRun
+  guid: 7485f7222c951b4285a7d52d27bd6787
+  Banks:
+  - {fileID: 114784420627063694}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 583
+--- !u!114 &114956073153346850
+=======
   Path: C:\Users\barbi\Documents\Coopolde\Coopolde\Assets\StreamingAssets\ReadyToGo\Build\Desktop\Master
     Bank.bank
   lastModified: 636753109280292629
@@ -247,6 +382,7 @@ MonoBehaviour:
     Value: 1276928
   Exists: 1
 --- !u!114 &114760508914821500
+>>>>>>> 24dcf2a54571a81569270db179f0aa7e200095e0
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -257,16 +393,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  Path: event:/SFX/DamageOnEnemies
+  guid: 9a3bf81f31f023458926efd23c8d206c
+  Banks:
+  - {fileID: 114784420627063694}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1023
+--- !u!114 &114991173185053080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Music/AMBIENCE_Under_Water_Deep_Dark_loop_stereo
+  guid: 10b987ab133d2e4c920be56aa4b2122f
+  Banks:
+  - {fileID: 114784420627063694}
+  IsStream: 1
+=======
   Path: event:/SFX/DamageOnPlayer
   guid: b74db7fd55241f4e8446b38750371c3c
   Banks:
   - {fileID: 114728440345710524}
   IsStream: 0
+>>>>>>> 24dcf2a54571a81569270db179f0aa7e200095e0
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
+<<<<<<< HEAD
+  Length: 10389
+=======
   Length: 332
 --- !u!114 &114830420721297288
 MonoBehaviour:
@@ -286,3 +455,4 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1182
   Exists: 1
+>>>>>>> 24dcf2a54571a81569270db179f0aa7e200095e0
