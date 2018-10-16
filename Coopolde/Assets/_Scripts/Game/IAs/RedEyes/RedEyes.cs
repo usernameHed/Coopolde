@@ -3,13 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrawlerController : EntityController, IKillable
+public class RedEyes : EntityController, IKillable
 {
     [FoldoutGroup("GamePlay"), SerializeField]
     private float timeOfDeath = 0.5f;
 
     [FoldoutGroup("GamePlay"), SerializeField]
-    private FrequencyCoolDown stunTime;
+    private GameObject nice;
+    [FoldoutGroup("GamePlay"), SerializeField]
+    private GameObject bad;
+    [FoldoutGroup("GamePlay"), SerializeField]
+    private FrequencyCoolDown timerToGetAngry;
+
+    private bool isAngry = false;
 
     [SerializeField]
     public GameObject refToFollow = null;
@@ -33,6 +39,25 @@ public class CrawlerController : EntityController, IKillable
 
         rb.transform.localPosition = Vector3.zero;
         isDying = false;
+        GetNice();
+    }
+
+    private void SetAngry()
+    {
+        if (timerToGetAngry.IsStartedAndOver())
+        {
+            isAngry = true;
+            nice.SetActive(false);
+            bad.SetActive(true);
+        }
+    }
+
+    private void GetNice()
+    {
+        nice.SetActive(true);
+        bad.SetActive(false);
+        isAngry = false;
+        timerToGetAngry.StartCoolDown();
     }
 
     /// <summary>
@@ -44,7 +69,8 @@ public class CrawlerController : EntityController, IKillable
             return;
 
         dirCura = refToFollow.transform.position - rb.transform.position;
-        entityTurn.SetDirection(new Vector2(dirCura.x, dirCura.z), false);
+        if (entityTurn)
+            entityTurn.SetDirection(new Vector2(dirCura.x, dirCura.z), false);
     }
 
     /// <summary>
@@ -52,7 +78,9 @@ public class CrawlerController : EntityController, IKillable
     /// </summary>
     private void MovePlayer()
     {
-        playerMove.Move(rb.transform.forward);
+        if (!isAngry)
+            return;
+        playerMove.Move(dirCura);
     }
 
     /// <summary>
@@ -60,8 +88,9 @@ public class CrawlerController : EntityController, IKillable
     /// </summary>
     private void Update()
     {
-        if (!enabledScript || !stunTime.IsReady())
+        if (!enabledScript)
             return;
+        SetAngry();
         TurnPlayer();
     }
 
@@ -70,7 +99,7 @@ public class CrawlerController : EntityController, IKillable
     /// </summary>
     private void FixedUpdate()
     {
-        if (!enabledScript || isDying || !stunTime.IsReady())
+        if (!enabledScript || isDying)
             return;
         MovePlayer();
     }
@@ -85,21 +114,21 @@ public class CrawlerController : EntityController, IKillable
         entityTurn.SetDirection(dirCura, true);
 
         //TODO: son quand lle joueur meurt
-
+        SoundManager.GetSingleton.PlaySound("RedEyesDie");
 
         StartCoroutine(RealyKill());
     }
 
     public void GetHit(int hurt)
     {
-        stunTime.StartCoolDown();
+        //stunTime.StartCoolDown();
     }
 
     private IEnumerator RealyKill()
     {
         yield return new WaitForSeconds(timeOfDeath);
 
-        SoundManager.GetSingleton.PlaySound("EnemyDeath");
+
         //ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.DeadCuca, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
         Destroy(gameObject);
     }
