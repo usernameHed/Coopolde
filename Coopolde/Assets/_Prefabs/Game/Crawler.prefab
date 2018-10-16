@@ -273,8 +273,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1470048803300158}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.99, y: 2, z: 0.26}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4802224015830430}
   m_Father: {fileID: 0}
@@ -710,8 +710,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hurtAmount: 1
   hurtOnlyPlayer: 1
+  isPlayer: 0
   coolDown:
     timeCoolDown: 0.5
+  timeAfterStopAttacking:
+    timeCoolDown: 1
 --- !u!114 &114432804954989546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -747,6 +750,7 @@ MonoBehaviour:
     vibrateRight: 0
     strenthRight: 0
     durationRight: 0
+  soundToPlayHit: 
   lifeMax: 10
   currentLife: 10
 --- !u!114 &114976621198887836
