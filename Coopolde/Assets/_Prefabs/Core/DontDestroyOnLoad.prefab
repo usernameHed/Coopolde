@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 114405158211845870}
   - component: {fileID: 114038422365326520}
   m_Layer: 0
-  m_Name: Bonus
+  m_Name: LightOn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -488,8 +488,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: event:/SFX/Bonus
-  PlayEvent: 1
+  Event: event:/SFX/LightOn
+  PlayEvent: 0
   StopEvent: 2
   CollisionTag: 
   AllowFadeout: 1

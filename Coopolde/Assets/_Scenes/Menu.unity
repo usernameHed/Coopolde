@@ -384,7 +384,6 @@ GameObject:
   - component: {fileID: 513888123}
   - component: {fileID: 513888124}
   - component: {fileID: 513888125}
-  - component: {fileID: 513888126}
   m_Layer: 0
   m_Name: Lights
   m_TagString: Untagged
@@ -436,26 +435,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2, z: 25}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &513888126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 513888122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a10f7a1d0927ace4e83618b14d9d0fe5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clipsEntry:
-  - key: LightOn
-    clips:
-    - {fileID: 8300000, guid: 8c58e0fd7900c487e9df7f8c7674254d, type: 3}
-    basePitch: 1
-    pitchOffset: 0
-    baseVolume: 1
-    volumeOffset: 0
-    loop: 1
 --- !u!1 &614848788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1849,6 +1828,11 @@ Prefab:
     - target: {fileID: 4217753727906640, guid: dfb7f32e7fc14334a8640e27502e264c, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114804243384677310, guid: dfb7f32e7fc14334a8640e27502e264c,
+        type: 2}
+      propertyPath: Event
+      value: event:/Music/AMBIENCE_Under_Water_Deep_Dark_loop_stereo
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfb7f32e7fc14334a8640e27502e264c, type: 2}

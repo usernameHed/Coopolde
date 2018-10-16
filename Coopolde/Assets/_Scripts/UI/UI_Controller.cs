@@ -14,6 +14,8 @@ public class UI_Controller : MonoBehaviour {
 
     [SerializeField] private float maxAngle;
 
+
+
     private float angle;
 
 
@@ -40,8 +42,8 @@ public class UI_Controller : MonoBehaviour {
 
     private void SwitchLight()
     {
-
         lightState = !lightState;
+        SoundManager.GetSingleton.PlaySound("LightOn", !lightState);
         redLight.SetActive(!fireA);
         whiteLight.SetActive(fireA);
     }
