@@ -85,7 +85,7 @@ public class CrawlerController : EntityController, IKillable
         entityTurn.SetDirection(dirCura, true);
 
         //TODO: son quand lle joueur meurt
-        SoundManager.GetSingleton.PlaySound("CrawlerDie");
+
 
         StartCoroutine(RealyKill());
     }
@@ -99,7 +99,7 @@ public class CrawlerController : EntityController, IKillable
     {
         yield return new WaitForSeconds(timeOfDeath);
 
-
+        SoundManager.GetSingleton.PlaySound("EnemyDeath");
         //ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.DeadCuca, rb.transform.position, rb.transform.rotation, ObjectsPooler.Instance.transform);
         Destroy(gameObject);
     }
