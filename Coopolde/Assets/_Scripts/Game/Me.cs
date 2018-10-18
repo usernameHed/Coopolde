@@ -13,10 +13,20 @@ public class Me : PlayerController, IKillable
     private float factorRepulseHit = 5f;
 
     [SerializeField]
+    private Material whiteMaterial;
+    [SerializeField]
+    private Material redMaterial;
+    [SerializeField]
+    private List<MeshRenderer> meshToChangeColor;
+
+    [SerializeField]
     private GameObject spot;
 
     [SerializeField]
     private Vibration vibration;
+
+    [SerializeField]
+    private FrequencyCoolDown timeToStayRed;
 
     [SerializeField, ReadOnly]
     private bool isRunning = false;
@@ -25,6 +35,11 @@ public class Me : PlayerController, IKillable
 
     private bool isDying = false;
     private bool gameOver = false;
+
+    private void Awake()
+    {
+        myself = CoopoldeManager.Instance.mySelf;
+    }
 
 
     private void SetRunning(bool run)
@@ -64,6 +79,11 @@ public class Me : PlayerController, IKillable
             return;
         base.Turn();
         InputMe();
+
+        if (timeToStayRed.IsStartedAndOver())
+        {
+            SetMaterials(true);
+        }
     }
 
     [Button]
@@ -84,7 +104,20 @@ public class Me : PlayerController, IKillable
     {
         Vector3 dir = rb.transform.position - posAttacker;
         playerMove.Move(dir, factorRepulseHit);
+
+        timeToStayRed.StartCoolDown();
+        SetMaterials(false);
     }
+
+    private void SetMaterials(bool white)
+    {
+        for (int i = 0; i < meshToChangeColor.Count; i++)
+        {
+            meshToChangeColor[i].material = (white) ? whiteMaterial : redMaterial;
+        }
+    }
+
+    
 
     private IEnumerator RealyKill()
     {

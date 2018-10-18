@@ -21,14 +21,18 @@ public class CentipedeController : EntityController, IKillable
     [SerializeField]
     public IACentipede iaCentiped;
 
-    [ReadOnly]
-    public bool isAttacking = false;
+    [SerializeField, ReadOnly]
+    private bool isAttacking = false;
+    public bool GetAttacking() { return (isAttacking); }
     [ReadOnly]
     public bool isWalking = false;
     [ReadOnly]
     public bool isRunning = false;
     [ReadOnly]
     public bool isMeInsideUs = false;
+
+    [SerializeField]
+    private GameObject lightCentiped;
 
     [SerializeField, ReadOnly]
     private bool isDying = false;
@@ -51,7 +55,7 @@ public class CentipedeController : EntityController, IKillable
 
         refToFollow = CoopoldeManager.Instance.GetTarget();
 
-        isAttacking = false;
+        SetAttacking(false);
 
         isWalking = false;
         isRunning = false;
@@ -96,10 +100,11 @@ public class CentipedeController : EntityController, IKillable
     /// <summary>
     /// set if the cuca is inside food or not, and if yes: set the reference
     /// </summary>
-    public void SetAttacking(bool attack, GameObject toFollow)
+    public void SetAttacking(bool attack)
     {
         isAttacking = attack;
-        refToFollow = toFollow;
+        lightCentiped.SetActive(attack);
+        //refToFollow = toFollow;
     }
 
     /// <summary>

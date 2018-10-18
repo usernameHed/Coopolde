@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class CoopoldeManager : SingletonMono<CoopoldeManager>
 {
     [SerializeField]
-    private MySelf mySelf;
+    public MySelf mySelf;
     [SerializeField]
     private Me me;
 

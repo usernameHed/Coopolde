@@ -27,7 +27,7 @@ public class IACentipede : MonoBehaviour
 
     public bool IsPasiveAndReadyToGetAngry()
     {
-        if (!cuca.isAttacking && isPasive)
+        if (!cuca.GetAttacking() && isPasive)
             return (true);
 
         return (false);
@@ -38,7 +38,7 @@ public class IACentipede : MonoBehaviour
     /// </summary>
     private void TestToSetAttacking()
     {
-        if (isPasive && cuca.isAttacking == true)
+        if (isPasive && cuca.GetAttacking() == true)
         {
             //ici on passe en état ANGRY
             isPasive = false;
@@ -90,7 +90,7 @@ public class IACentipede : MonoBehaviour
         isGettingAngry = false;
         iaIsAttackingForward = false;
         timeGettingAngry.Reset();
-        cuca.isAttacking = false;
+        cuca.SetAttacking(false);
     }
 
     /// <summary>
@@ -124,7 +124,7 @@ public class IACentipede : MonoBehaviour
                     stopVect = new Vector2(cuca.rb.transform.forward.x, cuca.rb.transform.forward.z);
                     cuca.ChangeDirectionIA(new Vector2(stopVect.x*0.0001f, stopVect.y * 0.0001f));
 
-                    if (cuca.isAttacking)
+                    if (cuca.GetAttacking())
                     {
                         state = 2;
                         break;
@@ -158,7 +158,7 @@ public class IACentipede : MonoBehaviour
                         cuca.ChangeDirectionIA(new Vector2(stopVect.x + x, stopVect.y + y));
                     }
 
-                    if (cuca.isAttacking)
+                    if (cuca.GetAttacking())
                     {
                         state = 2;
                         break;
@@ -185,7 +185,7 @@ public class IACentipede : MonoBehaviour
 
                     cuca.ChangeDirectionIA(new Vector2(vectDir.x * 1, vectDir.z * 1)); // change dir
 
-                    if (!cuca.isAttacking)
+                    if (!cuca.GetAttacking())
                     {
                         state = 0;
                         break;
@@ -219,7 +219,7 @@ public class IACentipede : MonoBehaviour
 
                     cuca.ChangeDirectionIA(new Vector2((vectDir.x + x) * 1, (vectDir.y + y) * 1));
 
-                    if (!cuca.isAttacking)
+                    if (!cuca.GetAttacking())
                     {
                         state = 0;
                         break;

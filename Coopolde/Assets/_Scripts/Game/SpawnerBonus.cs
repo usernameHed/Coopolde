@@ -6,8 +6,7 @@ public class SpawnerBonus : SingletonMono<SpawnerBonus>
 {
     [SerializeField]
     private float rangeRadius = 3f;
-    [SerializeField]
-    private int difficultyToAdd = 1;
+    
 
     [SerializeField]
     private List<IsOnCamera> spawnPoints;
@@ -31,8 +30,7 @@ public class SpawnerBonus : SingletonMono<SpawnerBonus>
 
     public void Spawn()
     {
-        CoopoldeManager.Instance.difficulty += difficultyToAdd;
-
+        
         List<IsOnCamera> spawns = new List<IsOnCamera>();
         for (int i = 0; i < spawnPoints.Count; i++)
         {

@@ -26,7 +26,7 @@ public class TriggerIA : MonoBehaviour
                 */
                 if (centi.iaCentiped.IsPasiveAndReadyToGetAngry())
                 {
-                    centi.isAttacking = true;
+                    centi.SetAttacking(true);
                     Debug.Log(centi.gameObject.name);
                 }
                 return;
