@@ -251,6 +251,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mySelf: {fileID: 90985817}
   me: {fileID: 905760314}
+  addDifficultyOverTime:
+    timeCoolDown: 0.1
   difficulty: 1
 --- !u!1001 &142454007
 Prefab:

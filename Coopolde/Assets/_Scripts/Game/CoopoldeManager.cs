@@ -10,7 +10,24 @@ public class CoopoldeManager : SingletonMono<CoopoldeManager>
     [SerializeField]
     private Me me;
 
+    [SerializeField]
+    private FrequencyCoolDown addDifficultyOverTime;
+
     public int difficulty = 1;
+
+    private void Start()
+    {
+        addDifficultyOverTime.StartCoolDown();
+    }
+
+    private void Update()
+    {
+        if (addDifficultyOverTime.IsStartedAndOver())
+        {
+            difficulty++;
+            addDifficultyOverTime.StartCoolDown();
+        }
+    }
 
     public GameObject GetTarget()
     {
