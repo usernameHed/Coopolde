@@ -51,8 +51,15 @@ public class LifeEntity : MonoBehaviour
         //son quand on est touché
         SoundManager.GetSingleton.PlaySound(soundToPlayHit);
 
-
-        ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.ParticleBump, transform.position, transform.rotation, ObjectsPooler.Instance.transform);
+        if(isPlayer)
+        {
+            Debug.Log("player");
+            ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.ParticleBimpPlayer, transform.position, transform.rotation, ObjectsPooler.Instance.transform);
+        }
+        else 
+        {
+            ObjectsPooler.Instance.SpawnFromPool(GameData.PoolTag.ParticleBump, transform.position, transform.rotation, ObjectsPooler.Instance.transform);
+        }
         PlayerConnected.Instance.SetVibrationPlayer(0, vibration);
 
         if (currentLife <= 0)

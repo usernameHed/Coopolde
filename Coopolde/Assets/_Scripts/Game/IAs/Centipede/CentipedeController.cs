@@ -104,6 +104,7 @@ public class CentipedeController : EntityController, IKillable
     {
         isAttacking = attack;
         lightCentiped.SetActive(attack);
+        SoundManager.GetSingleton.PlaySound("Scream");
         //refToFollow = toFollow;
     }
 

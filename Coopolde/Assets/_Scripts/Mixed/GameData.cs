@@ -27,6 +27,7 @@ public static class GameData
     public enum PoolTag
     {
         ParticleBump,
+        ParticleBimpPlayer,
         Link,
         ParticleRopeTense,
     }

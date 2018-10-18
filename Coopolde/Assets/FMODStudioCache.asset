@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114493336874613306}
-  - {fileID: 114674417241117040}
+  - {fileID: 114754046239624124}
   EditorEvents:
   - {fileID: 114898282724850632}
   - {fileID: 114592322734761702}
@@ -25,10 +25,10 @@ MonoBehaviour:
   - {fileID: 114578911642276550}
   - {fileID: 114711508724752238}
   - {fileID: 114362087080676092}
-  - {fileID: 114225797188922034}
-  MasterBankRef: {fileID: 114674417241117040}
+  - {fileID: 114265360256330706}
+  MasterBankRef: {fileID: 114754046239624124}
   StringsBankRef: {fileID: 114493336874613306}
-  stringsBankWriteTime: 636754664843153210
+  stringsBankWriteTime: 636754760950000000
   cacheVersion: 2
 --- !u!114 &114225797188922034
 MonoBehaviour:
@@ -43,8 +43,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/SFX/Bonus
   guid: 3c6d72a47b09e74d8cc4b18605a640c8
-  Banks:
-  - {fileID: 114674417241117040}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -52,6 +51,28 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1410
+--- !u!114 &114265360256330706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Scream
+  guid: 636edd5645f53c4fbe1ffba04b531147
+  Banks:
+  - {fileID: 114754046239624124}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 633
 --- !u!114 &114344515021825606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +87,7 @@ MonoBehaviour:
   Path: event:/SFX/RobotRunStart
   guid: 5b4f03c3e90a4a42b516cf4ea812543f
   Banks:
-  - {fileID: 114674417241117040}
+  - {fileID: 114754046239624124}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -88,7 +109,7 @@ MonoBehaviour:
   Path: event:/Music/BackgroundMusic
   guid: f0ddf0f136ac5048847a7e2e373f0eb1
   Banks:
-  - {fileID: 114674417241117040}
+  - {fileID: 114754046239624124}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -126,8 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: Assets\StreamingAssets\ReadyToGo\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636754664843153210
+  Path: Assets/StreamingAssets/ReadyToGo/Build/Desktop/Master Bank.strings.bank
+  lastModified: 636754760950000000
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -166,7 +187,7 @@ MonoBehaviour:
   Path: event:/SFX/LightOn
   guid: 42bde6e9f83fca4dbe01d041d9000cd5
   Banks:
-  - {fileID: 114674417241117040}
+  - {fileID: 114754046239624124}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -188,7 +209,7 @@ MonoBehaviour:
   Path: event:/SFX/EnemyDeath
   guid: b16fc54ee0c227429739c3ca47be0b11
   Banks:
-  - {fileID: 114674417241117040}
+  - {fileID: 114754046239624124}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -210,7 +231,7 @@ MonoBehaviour:
   Path: event:/SFX/RobotRun
   guid: 7485f7222c951b4285a7d52d27bd6787
   Banks:
-  - {fileID: 114674417241117040}
+  - {fileID: 114754046239624124}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -232,7 +253,7 @@ MonoBehaviour:
   Path: event:/SFX/EnemyDeath2
   guid: 283acca202942c45849fd85d629b98d7
   Banks:
-  - {fileID: 114674417241117040}
+  - {fileID: 114754046239624124}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -254,7 +275,7 @@ MonoBehaviour:
   Path: event:/SFX/DamageOnEnemies
   guid: 9a3bf81f31f023458926efd23c8d206c
   Banks:
-  - {fileID: 114674417241117040}
+  - {fileID: 114754046239624124}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -295,7 +316,7 @@ MonoBehaviour:
   Path: event:/SFX/DamageOnPlayer
   guid: b74db7fd55241f4e8446b38750371c3c
   Banks:
-  - {fileID: 114674417241117040}
+  - {fileID: 114754046239624124}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -317,7 +338,7 @@ MonoBehaviour:
   Path: event:/SFX/RobotRunEnd
   guid: 978a5197ccf6d249b7c6ef9c8dadebc2
   Banks:
-  - {fileID: 114674417241117040}
+  - {fileID: 114754046239624124}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -325,6 +346,25 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 900
+--- !u!114 &114754046239624124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/paulgaston/Documents/GitHub/Coopolde/Coopolde/Assets/StreamingAssets/ReadyToGo/Build/Desktop/Master
+    Bank.bank
+  lastModified: 636754760950000000
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1283776
+  Exists: 1
 --- !u!114 &114824396393975208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,7 +398,7 @@ MonoBehaviour:
   Path: event:/Music/AMBIENCE_Under_Water_Deep_Dark_loop_stereo
   guid: 10b987ab133d2e4c920be56aa4b2122f
   Banks:
-  - {fileID: 114674417241117040}
+  - {fileID: 114754046239624124}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
