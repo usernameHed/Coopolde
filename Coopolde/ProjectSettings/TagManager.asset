@@ -13,6 +13,7 @@ TagManager:
   - Hurt
   - Button
   - RedEye
+  - Bonus
   layers:
   - Default
   - TransparentFX
