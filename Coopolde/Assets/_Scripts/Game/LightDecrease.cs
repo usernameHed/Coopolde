@@ -73,9 +73,9 @@ public class LightDecrease : SingletonMono<LightDecrease>
         lights[1].spotAngle = newSizeLight;
     }
 
-    public void SetToPercent(float percent)
+    public void PercentToAdd(float percent)
     {
-        lightIntensity = percent;
+        lightIntensity += percent;
 
         SetAllScale();
     }

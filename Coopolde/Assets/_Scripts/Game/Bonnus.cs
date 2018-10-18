@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bonnus : MonoBehaviour
 {
     [SerializeField, Range(0, 100)]
-    private float percentToSet = 100;
+    private float percentToAdd = 50;
     [SerializeField]
     private int difficultyToAdd = 1;
 
@@ -17,7 +17,7 @@ public class Bonnus : MonoBehaviour
 
             SoundManager.GetSingleton.PlaySound("Bonus");
             SpawnerBonus.Instance.Spawn();
-            LightDecrease.Instance.SetToPercent(percentToSet);
+            LightDecrease.Instance.PercentToAdd(percentToAdd);
             Destroy(gameObject);
         }
     }
