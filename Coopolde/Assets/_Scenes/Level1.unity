@@ -252,7 +252,7 @@ MonoBehaviour:
   mySelf: {fileID: 90985817}
   me: {fileID: 905760314}
   addDifficultyOverTime:
-    timeCoolDown: 0.1
+    timeCoolDown: 2
   difficulty: 1
 --- !u!1001 &142454007
 Prefab:
