@@ -1,86 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using Sirenix.OdinInspector;
 
-public class ObjectiveIndicator : MonoBehaviour
+public class ObjectiveIndicator : MonoBehaviour 
 {
-    #region Attribute
-
-    public bool startVisible = true;                            //démare visible !
-
-    //On screen
-    [FoldoutGroup("On Screen Image"), Tooltip("Hide"), SerializeField]
-    private bool hideOnScreen = false;
-    [DisableIf("hideOnScreen"), FoldoutGroup("On Screen Image"), Tooltip("Sprite"), SerializeField]
-    private Sprite onScreenSprite;
-    [DisableIf("hideOnScreen"), FoldoutGroup("On Screen Image"), Tooltip("Color sprite"), SerializeField]
-    private Color onScreenTextureColor = Color.white;
-    [DisableIf("hideOnScreen"), FoldoutGroup("On Screen Image"), Tooltip("Size texture"), SerializeField]
-    private float onScreenTextureSize = 0.1f;
-    [DisableIf("hideOnScreen"), FoldoutGroup("On Screen Image"), Tooltip("Start orientation"), SerializeField]
-    private float onScreenTextureRotation = 0;
-
-
-    //Out screen
-    [FoldoutGroup("Off Screen Image"), Tooltip("Hide"), SerializeField]
-    private bool hideOutofScreen = false;
-    [DisableIf("hideOutofScreen"), FoldoutGroup("Off Screen Image"), Tooltip("Sprite"), SerializeField]
-    private Sprite outofScreenSprite;
-    [DisableIf("hideOutofScreen"), FoldoutGroup("Off Screen Image"), Tooltip("Color sprite"), SerializeField]
-    private Color outofScreenTextureColor = Color.white;
-    [DisableIf("hideOutofScreen"), FoldoutGroup("Off Screen Image"), Tooltip("Size texture"), SerializeField]
-    private float outofScreenTextureScreenPercentSize = 0.1f;
-    [DisableIf("hideOutofScreen"), FoldoutGroup("Off Screen Image"), Tooltip("Border offset"), SerializeField]
-    private Vector2 outofScreenBorderOffset;
-    [DisableIf("hideOutofScreen"), FoldoutGroup("Off Screen Image"), Tooltip("Start orientation"), SerializeField]
-    private float outofScreenTextureRotation = 0;
-    [DisableIf("hideOutofScreen"), FoldoutGroup("Off Screen Image"), Tooltip("Rotate or not"), SerializeField]
-    private bool outofScreenRotateTexture = true;
-    [EnableIf("outofScreenRotateTexture"), DisableIf("hideOutofScreen"), FoldoutGroup("Off Screen Image"), Tooltip("StartOrientationType"), SerializeField]
-    private Position outofScreenBaseOrientation = Position.Top;
-    [EnableIf("outofScreenRotateTexture"), DisableIf("hideOutofScreen"), FoldoutGroup("Off Screen Image"), Tooltip("Precise Rotation (more cost)"), SerializeField]
-    private bool presiceRotation = false;
-
-    //Fade
-    [DisableIf("hideOnScreen"), FoldoutGroup("Fade parameters"), Tooltip("Opacity On Screen"), SerializeField, Range(0, 1f)]
-    private float opacityOpOnScreen = 0.6f;
-    [DisableIf("hideOutofScreen"), FoldoutGroup("Fade parameters"), Tooltip("Opacity Out Screen"), SerializeField, Range(0, 1f)]
-    private float opacityOpOutScreen = 1.0f;
-    [FoldoutGroup("Fade parameters"), Tooltip("Fade In Duration"), SerializeField]
-    private float fadeInDuration = 2;
-
-    //scale
-    [FoldoutGroup("Scale parameters"), Tooltip("minScale"), SerializeField]
-    private float minScale = 0.25f;
-    [FoldoutGroup("Scale parameters"), Tooltip("maxScale"), SerializeField]
-    private float maxScale = 1;
-    [FoldoutGroup("Scale parameters"), Tooltip("minDistance"), SerializeField]
-    private float minDistance = 1;
-    [FoldoutGroup("Scale parameters"), Tooltip("maxDistance"), SerializeField]
-    private float maxDistance = 20;
-    [FoldoutGroup("Scale parameters"), Tooltip("scaleOnScreen"), SerializeField]
-    private float scaleOnScreen = 0.6f;
-
-
-    //Animation
-    [FoldoutGroup("Animation parameters"), Tooltip("currentScale"), SerializeField]
-    public AnimMode animationMode;
-    [FoldoutGroup("Animation parameters"), Tooltip("scaleAnimAmplitude"), SerializeField]
-    public float scaleAnimAmplitude = 0.5f;
-    [FoldoutGroup("Animation parameters"), Tooltip("scaleAnimSmooth"), SerializeField]
-    public float scaleAnimSmooth = 0.4f;
-
-
-    //debug
-    [FoldoutGroup("Debug"), Tooltip("opti fps"), SerializeField]
-    private FrequencyTimer updateTimer;             //optimisation des fps
-    [FoldoutGroup("Debug"), Tooltip("OrdreInLayer of canvas"), SerializeField]
-    public int canvasSortOrder = 0;
-
-    /// <summary>
-    /// private
-    /// </summary>
-
     private static Camera usedCamera;
     public static Camera UsedCamera
     {
@@ -95,11 +17,14 @@ public class ObjectiveIndicator : MonoBehaviour
         set { ObjectiveIndicator.usedCanvas = value; }
     }
 
-    private Transform _trans;
+    public int canvasSortOrder = 0;
 
+    private Transform _trans;
+    
+    public enum DrawMode { OnGUI, UICanvas };
     private enum FadeMode { None, FadeIn, FadeOut };
     public enum Position { Top = 0, TopRight = 45, Right = 90, BottomRight = 135, Bottom = 180, BottomLeft = 225, Left = 270, TopLeft = 315, NotClamped = 360 };
-    public enum AnimMode { NoAnimation, AnimateOnScreen, AnimateOutOfScreen, AlwaysAnimate };
+    public enum AnimMode { NoAnimation, AnimateOnScreen, AnimateOutOfScreen, AlwaysAnimate};
 
     private bool isActive = false;
     private bool isVisible = false;
@@ -113,53 +38,95 @@ public class ObjectiveIndicator : MonoBehaviour
     private Image linkedImage;
     private RectTransform linkedImageTrans;
 
-    private CameraSplago cc;
-
-    private float currentScale;
-    private bool animateScale = false;
-    private float currentAnimScalePercent = 1;
-    private float animVelocity;
-    private bool scaleAnimUp = true;
-
+    [Header("Base parameters")]
+    public bool startVisible = true;                            //démare visible !
+    public bool hideWhenKinematic = true;                       //cache le pointer quand il est kinematic !
+    public DrawMode usedDrawMode = DrawMode.OnGUI;
+    private CameraController cc;
+    [Range(0, 0.1f)]    public float timeOpti = 0.1f;
+    private float timeToGo;
+    public bool isInPlayer = false;
+    public bool isMulti = false;                                //en multi, add up !
+    public float addUp = 83f;
+    public bool isOpPowerPlayer = false;
+    [Range(0, 1f)]    public float opacityOpOnScreen = 0.6f;
+    [Range(0, 1f)]    public float opacityOpOutScreen = 1.0f;
     private CanvasGroup cg;
 
-    private Camera camMain;
+    private GameManager gameManager;
 
+    [Header("On screen parameters")]
+    public bool hideOnScreen = false;
+    public Sprite onScreenSprite;
+    public Color onScreenTextureColor = Color.white;
+    public float onScreenTextureSize = 0.1f;
+    public float onScreenTextureRotation = 0;
 
+    [Header("Out of screen parameters")]
+    public bool hideOutofScreen = false;
+    public Sprite outofScreenSprite;
+    public Sprite [] outofScreenSpriteArray;
+    private int currentPlayer = -1;
+    public Color outofScreenTextureColor = Color.white;
+    public float outofScreenTextureScreenPercentSize = 0.1f;
+    public Vector2 outofScreenBorderOffset;
+    public float outofScreenTextureRotation = 0;
+    public bool outofScreenRotateTexture = true;
+    public Position outofScreenBaseOrientation = Position.Top;
 
+    [Header("Fade parameters")]
+    public float fadeInDuration = 2;
+    public float fadeOutDuration = 4;
 
-    #endregion
+    [Header("Scale parameters")]
+    public float minScale = 0.25f;
+    public float maxScale = 1;
+    public float minDistance = 1;
+    public float maxDistance = 20;
+    public float scaleOnScreen = 0.6f;
+    private float currentScale;
 
-    #region Initialisation
+    [Header("Animation parameters")]
+    public AnimMode animationMode;
+    public float scaleAnimAmplitude = 0.5f;
+    private bool scaleAnimUp = true;
+    private float currentAnimScalePercent = 1;
+    private float animVelocity;
+    public float scaleAnimSmooth = 0.4f;
+    private bool animateScale = false;
+
+    void OnDestroy()
+    {
+        hideOutofScreen = true;
+    }
+
+    // Orientation qui dépend de la position d'un autre gameobject
+    // Rotation de l'image par rapport au bord de l'écran
 
     void Awake()
     {
+        //hideOutofScreenTmp = hideOutofScreen;
+        //hideOnScreenTmp = hideOnScreen;
+        //if (isOpPowerPlayer)
+          //  linkedImage.gameObject.transform.Rotate(0, 0, 180);
+
         _trans = transform;
-        camMain = GameManager.Instance.CameraMain;
 
         if (usedCamera == null)
-            usedCamera = camMain;
-
-        
+            usedCamera = Camera.main;
+        GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+        if (gameController)
+            gameManager = gameController.GetComponent<GameManager>();
     }
 
-    void OnEnable()
+    void Start()
     {
-        if (startVisible)
-        {
-            Activate();
-        }
-        //SetVisible();
-        Init();
-    }
-
-    private void Init()
-    {
-        if (!camMain)
+        if (!Camera.main)
             return;
-        cc = camMain.transform.gameObject.GetComponent<CameraSplago>();
+        cc = Camera.main.transform.gameObject.GetComponent<CameraController>();
+        timeToGo = Time.fixedTime + timeOpti;
 
-        if (usedCanvas == null)
+        if (usedDrawMode == DrawMode.UICanvas && usedCanvas == null)
         {
             GameObject newCanvas = new GameObject("Canvas_Objective", typeof(Canvas));
             newCanvas.layer = LayerMask.NameToLayer("UI");
@@ -173,15 +140,17 @@ public class ObjectiveIndicator : MonoBehaviour
             canvasTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height);
         }
 
-        // Generate the image
-        GameObject newImage = new GameObject(name + "_Image", typeof(Image));
-        newImage.transform.SetParent(usedCanvas.transform, false);
-        linkedImage = newImage.GetComponent<Image>();
-        linkedImageTrans = newImage.GetComponent<RectTransform>();
-        linkedImageTrans.gameObject.layer = LayerMask.NameToLayer("UI");
-        linkedImageTrans.anchoredPosition = new Vector2(-Screen.width, -Screen.height);
-        cg = newImage.AddComponent<CanvasGroup>() as CanvasGroup;
-
+        if (usedDrawMode == DrawMode.UICanvas)
+        {
+            // Generate the image
+            GameObject newImage = new GameObject(name + "_Image", typeof(Image));
+            newImage.transform.SetParent(usedCanvas.transform, false);
+            linkedImage = newImage.GetComponent<Image>();
+            linkedImageTrans = newImage.GetComponent<RectTransform>();
+            linkedImageTrans.gameObject.layer = LayerMask.NameToLayer("UI");
+            linkedImageTrans.anchoredPosition = new Vector2(-Screen.width, -Screen.height);
+            cg = newImage.AddComponent<CanvasGroup>() as CanvasGroup;
+        }
 
         DeactivateEndFadeOut();
 
@@ -190,9 +159,6 @@ public class ObjectiveIndicator : MonoBehaviour
             Activate();
         }
     }
-    #endregion
-
-    #region Core script
 
     /// <summary>
     /// Show the indicator with a fade in animation
@@ -205,14 +171,14 @@ public class ObjectiveIndicator : MonoBehaviour
         SetVisible();
     }
 
-    /*/// <summary>
+    /// <summary>
     /// Hide the indicator with a fade out animation
     /// </summary>
     public void Deactivate()
     {
         currentFadeMode = FadeMode.FadeOut;
         fadeStartTime = Time.time;
-    }*/
+    }
 
     /// <summary>
     /// Called when the fade out of the deactivation end to hide the objective
@@ -259,7 +225,22 @@ public class ObjectiveIndicator : MonoBehaviour
         animateScale = false;
     }
 
+    void Update()
+    {
+        if (isActive && Time.fixedTime >= timeToGo)
+        {
+            UpdateVisibility();
 
+            if (isVisible)
+            {
+                UpdateFade();
+                UpdateScale();
+                UpdateScaleAnimation();
+                UpdateUICanvas();
+            }
+            timeToGo = Time.fixedTime + timeOpti;
+        }
+    }
 
     /// <summary>
     /// Update element visibility
@@ -268,8 +249,8 @@ public class ObjectiveIndicator : MonoBehaviour
     {
         viewportPosition = usedCamera.WorldToViewportPoint(_trans.position);
 
-        if (viewportPosition.x > 1 - outofScreenBorderOffset.x || viewportPosition.x < outofScreenBorderOffset.x
-            || viewportPosition.y > 1 - outofScreenBorderOffset.y || viewportPosition.y < outofScreenBorderOffset.y
+        if (viewportPosition.x > 1 - outofScreenBorderOffset.x || viewportPosition.x < outofScreenBorderOffset.x 
+            || viewportPosition.y > 1 - outofScreenBorderOffset.y || viewportPosition.y < outofScreenBorderOffset.y 
             || viewportPosition.z <= 0)
         {
             isOnScreen = false;
@@ -300,9 +281,8 @@ public class ObjectiveIndicator : MonoBehaviour
             if (currentAlpha == 1)
                 currentFadeMode = FadeMode.None;
         }
-        /*else if (currentFadeMode == FadeMode.FadeOut)
+        else if (currentFadeMode == FadeMode.FadeOut)
         {
-            Debug.Log("fade Out");
             float fadeProgress = (Time.time - fadeStartTime) / fadeOutDuration;
             currentAlpha = Mathf.Lerp(currentAlpha, 0, fadeProgress);
             if (currentAlpha == 0)
@@ -310,7 +290,7 @@ public class ObjectiveIndicator : MonoBehaviour
                 currentFadeMode = FadeMode.None;
                 DeactivateEndFadeOut();
             }
-        }*/
+        }
     }
 
     /// <summary>
@@ -349,7 +329,7 @@ public class ObjectiveIndicator : MonoBehaviour
         }
         else
         {
-            if (currentAnimScalePercent != 1)
+            if(currentAnimScalePercent != 1)
                 currentAnimScalePercent = Mathf.SmoothDamp(currentAnimScalePercent, 1, ref animVelocity, scaleAnimSmooth);
         }
     }
@@ -487,13 +467,6 @@ public class ObjectiveIndicator : MonoBehaviour
         else
             horizPerc = (horizAngle + horizFov * 0.5f) / horizFov;
 
-        Vector3 screenPoint = camMain.WorldToScreenPoint(_trans.position);
-        // Debug.Log("screenpoint" + screenPoint);
-        if (screenPoint.x > 0 && screenPoint.x < usedCamera.pixelWidth)
-        {
-            horizPerc = screenPoint.x / usedCamera.pixelWidth;
-        }
-
         float vertFov = usedCamera.fieldOfView;
         float vertPerc = 0.0f;
         if (vertAngle < -(vertFov * 0.5f))
@@ -503,16 +476,7 @@ public class ObjectiveIndicator : MonoBehaviour
         else
             vertPerc = (vertAngle + vertFov * 0.5f) / vertFov;
 
-        if (screenPoint.y < 0)
-        {
-            float vertPercNeg = Mathf.Abs(vertPerc);
-            vertPercNeg *= -1;
-            return new Vector3(horizPerc, vertPercNeg, -1);
-        }
-        else
-        {
-            return new Vector3(horizPerc, vertPerc, -1);
-        }
+        return new Vector3(horizPerc, vertPerc, -1);
     }
 
     /// <summary>
@@ -534,8 +498,8 @@ public class ObjectiveIndicator : MonoBehaviour
         if (screenPos.y >= usedCamera.pixelHeight - usedCamera.pixelHeight * _offset.y)
             screenPos.y = usedCamera.pixelHeight - (_height / 2f + usedCamera.pixelHeight * _offset.y);
 
-        //if ((isInPlayer || isMulti) && isOnScreen)
-        //  screenPos.y += addUp;
+        if ((isInPlayer || isMulti) && isOnScreen)
+            screenPos.y += addUp;
         return screenPos;
     }
 
@@ -544,122 +508,108 @@ public class ObjectiveIndicator : MonoBehaviour
     /// </summary>
     private void UpdateUICanvas()
     {
-        if (!linkedImage)
+        if (usedDrawMode == DrawMode.UICanvas)
         {
-            Debug.LogWarning("something went bad... but it's ok ! We just don't have Objective indicator anymore !");
-            //Init();
-            Destroy(this);
-            return;
-        }
+            // Set UI width and height
+            float elementWidth = 0;
+            float elementHeight = 0;
+            float angle = 0;
+            Vector2 textureOffset = Vector2.zero;
+            Color newColor = Color.white;
 
-        // Set UI width and height
-        float elementWidth = 0;
-        float elementHeight = 0;
-        float angle = 0;
-        Vector2 textureOffset = Vector2.zero;
-        Color newColor = Color.white;
-
-        if (isOnScreen && !hideOnScreen)
-        {
-            if (onScreenSprite != null)
+            if (isOnScreen && !hideOnScreen)
             {
-                // Color
-                newColor = onScreenTextureColor;
-                newColor.a = currentAlpha;
-                linkedImage.color = newColor;
-
-                // Angle
-                angle = onScreenTextureRotation;
-
-                // Size
-                elementWidth = GetScreenMeasure() * onScreenTextureSize * currentScale * currentAnimScalePercent;
-                elementHeight = elementWidth * onScreenSprite.texture.height / onScreenSprite.texture.width;
-
-                // Set UI size
-                linkedImageTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, elementWidth);
-                linkedImageTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, elementHeight);
-                linkedImage.sprite = onScreenSprite;
-            }
-            else
-                Debug.LogError("No onScreenSprite affected to " + name);
-        }
-        else if (!isOnScreen && !hideOutofScreen)
-        {
-            if (outofScreenSprite != null)
-            {
-                // Color
-                newColor = outofScreenTextureColor;
-                newColor.a = currentAlpha;
-                linkedImage.color = newColor;
-
-                // Angle
-                angle = outofScreenTextureRotation;
-
-                // Offset
-                textureOffset = outofScreenBorderOffset;
-
-                // Size
-                elementWidth = GetScreenMeasure() * outofScreenTextureScreenPercentSize * currentScale * currentAnimScalePercent;
-                elementHeight = elementWidth * outofScreenSprite.texture.height / outofScreenSprite.texture.width;
-
-                // Set UI size
-                if (!gameObject || !linkedImageTrans)
+                if (onScreenSprite != null)
                 {
-                    Debug.Log("ici avant d'être détruit");
-                    Destroy(gameObject);
-                    return;
+                    // Color
+                    newColor = onScreenTextureColor;
+                    newColor.a = currentAlpha;
+                    linkedImage.color = newColor;
+
+                    // Angle
+                    angle = onScreenTextureRotation;
+
+                    // Size
+                    elementWidth = GetScreenMeasure() * onScreenTextureSize * currentScale * currentAnimScalePercent;
+                    elementHeight = elementWidth * onScreenSprite.texture.height / onScreenSprite.texture.width;
+                    
+                    // Set UI size
+                    linkedImageTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, elementWidth);
+                    linkedImageTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, elementHeight);
+                    linkedImage.sprite = onScreenSprite;
                 }
-                linkedImageTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, elementWidth);
-                linkedImageTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, elementHeight);
-                linkedImage.sprite = outofScreenSprite;
+                else
+                    Debug.LogError("No onScreenSprite affected to " + name);
+            }
+            else if (!isOnScreen && !hideOutofScreen)
+            {
+                if (outofScreenSprite != null)
+                {
+                    // Color
+                    newColor = outofScreenTextureColor;
+                    newColor.a = currentAlpha;
+                    linkedImage.color = newColor;
+
+                    // Angle
+                    angle = outofScreenTextureRotation;
+
+                    // Offset
+                    textureOffset = outofScreenBorderOffset;
+
+                    // Size
+                    elementWidth = GetScreenMeasure() * outofScreenTextureScreenPercentSize * currentScale * currentAnimScalePercent;
+                    elementHeight = elementWidth * outofScreenSprite.texture.height / outofScreenSprite.texture.width;
+
+                    // Set UI size
+                    if (!gameObject || !linkedImageTrans)
+                    {
+                        Debug.Log("ici avant d'être détruit");
+                        Destroy(gameObject);
+                        return;
+                    }
+                    linkedImageTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, elementWidth);
+                    linkedImageTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, elementHeight);
+                    linkedImage.sprite = outofScreenSprite;
+                }
+                else
+                    Debug.LogError("No outofScreenSprite affected to " + name);
+            }
+
+            Vector3 usedViewport = GetUsedViewport();
+            Vector3 screenPos = new Vector3(Mathf.Lerp(0.0f, usedCamera.pixelWidth, Mathf.Clamp(usedViewport.x, 0.0f, 1.0f)), Mathf.Lerp(0.0f, usedCamera.pixelHeight, 
+                Mathf.Clamp(usedViewport.y, 0.0f, 1.0f)), usedViewport.z);
+
+            Position currentOrientation = GetOrientationFromScreenPos(screenPos, textureOffset);
+
+            screenPos = GetModifiedScreenPos(screenPos, elementWidth, elementHeight, textureOffset);
+
+            linkedImageTrans.anchoredPosition = new Vector2(screenPos.x - (Screen.width / 2), screenPos.y - (Screen.height / 2));
+
+            // Orientation
+            if (!isOnScreen)
+            {
+                if (outofScreenRotateTexture)
+                    angle += GetImageAngle(outofScreenBaseOrientation, currentOrientation);
+
+                angle = RotateTo(angle);
+                linkedImageTrans.rotation = Quaternion.Euler(0, 0, angle);
+                cg.alpha = opacityOpOutScreen;
             }
             else
-                Debug.LogError("No outofScreenSprite affected to " + name);
+            {
+                linkedImageTrans.rotation = Quaternion.Euler(0, 0, 0);
+                cg.alpha = opacityOpOnScreen;
+            }
+
         }
-
-        Vector3 usedViewport = GetUsedViewport();
-        Vector3 screenPos = new Vector3(Mathf.Lerp(0.0f, usedCamera.pixelWidth, Mathf.Clamp(usedViewport.x, 0.0f, 1.0f)), Mathf.Lerp(0.0f, usedCamera.pixelHeight,
-            Mathf.Clamp(usedViewport.y, 0.0f, 1.0f)), usedViewport.z);
-
-        Position currentOrientation = GetOrientationFromScreenPos(screenPos, textureOffset);
-
-        screenPos = GetModifiedScreenPos(screenPos, elementWidth, elementHeight, textureOffset);
-
-        linkedImageTrans.anchoredPosition = new Vector2(screenPos.x - (Screen.width / 2), screenPos.y - (Screen.height / 2));
-
-        // Orientation
-        if (!isOnScreen)
-        {
-            if (outofScreenRotateTexture)
-                angle += GetImageAngle(outofScreenBaseOrientation, currentOrientation);
-
-            //activer la rotation précise de l'objets
-            if (presiceRotation)
-                angle = RotateTo(angle);
-            linkedImageTrans.rotation = Quaternion.Euler(0, 0, angle);
-            cg.alpha = opacityOpOutScreen;
-        }
-        else
-        {
-            linkedImageTrans.rotation = Quaternion.Euler(0, 0, 0);
-            cg.alpha = opacityOpOnScreen;
-        }
-
-        //testIfChangeSprite();
-
     }
 
-    /// <summary>
-    /// activer la rotation précise de l'objet
-    /// </summary>
-    /// <param name="angle"></param>
-    /// <returns></returns>
     private float RotateTo(float angle)
     {
         Vector3 tmpDesiredPos = cc.TargetPosition;
         tmpDesiredPos.z = 0.0f;
         Vector3 v3Pos;
-        v3Pos = camMain.WorldToScreenPoint(tmpDesiredPos);
+        v3Pos = Camera.main.WorldToScreenPoint(tmpDesiredPos);
         v3Pos = linkedImageTrans.transform.position - v3Pos;
         angle = Mathf.Atan2(v3Pos.y, v3Pos.x) * Mathf.Rad2Deg;
         angle += 90.0f;
@@ -674,36 +624,84 @@ public class ObjectiveIndicator : MonoBehaviour
         //onScreenSprite = null;
     }
 
-    #endregion
-
-    #region Unity functions
-
-    /// <summary>
-    /// update la position
-    /// </summary>
-    void Update()
+    void OnGUI()
     {
-        if (isActive)
+        if (usedDrawMode == DrawMode.OnGUI && isVisible && ((!isOnScreen && !hideOutofScreen) || (isOnScreen && !hideOnScreen)))
         {
-            if (updateTimer.Ready())
+            float elementWidth = 0;
+            float elementHeight = 0;
+            float angle = 0;
+            Vector2 textureOffset = Vector2.zero;
+            Texture imageToDraw = null;
+            Color newColor = Color.white;
+
+            if (isOnScreen && !hideOnScreen)
             {
-                UpdateVisibility();
+                if (onScreenSprite != null)
+                {
+                    // Color
+                    newColor = onScreenTextureColor;
+                    newColor.a = currentAlpha;
+
+                    // Angle
+                    angle = onScreenTextureRotation;
+
+                    // Image
+                    imageToDraw = onScreenSprite.texture;
+
+                    // Size
+                    elementWidth = GetScreenMeasure() * onScreenTextureSize * currentScale * currentAnimScalePercent;
+                    elementHeight = elementWidth * onScreenSprite.texture.height / onScreenSprite.texture.width;
+                }
+                else
+                    Debug.LogError("No onScreenSprite affected to " + name);
+            }
+            else if (!isOnScreen && !hideOutofScreen)
+            {
+                if (outofScreenSprite != null)
+                {
+                    // Color
+                    newColor = outofScreenTextureColor;
+                    newColor.a = currentAlpha;
+
+                    // Angle
+                    angle = outofScreenTextureRotation;
+
+                    // Offset
+                    textureOffset = outofScreenBorderOffset;
+
+                    // texture
+                    imageToDraw = outofScreenSprite.texture;
+
+                    // Size
+                    elementWidth = GetScreenMeasure() * outofScreenTextureScreenPercentSize * currentScale * currentAnimScalePercent;
+                    elementHeight = elementWidth * outofScreenSprite.texture.height / outofScreenSprite.texture.width;
+                }
+                else
+                    Debug.LogError("No outofScreenTextureScreenPercentSize affected to " + name);
             }
 
-            if (isVisible)
-            {
-                UpdateFade();
-                UpdateScale();
-                UpdateScaleAnimation();
-                UpdateUICanvas();
-            }
+            Vector3 usedViewport = GetUsedViewport();
+            Vector3 screenPos = new Vector3(Mathf.Lerp(0.0f, usedCamera.pixelWidth, Mathf.Clamp(usedViewport.x, 0.0f, 1.0f)), Mathf.Lerp(0.0f, usedCamera.pixelHeight,
+                Mathf.Clamp(usedViewport.y, 0.0f, 1.0f)), usedViewport.z);
+
+            Position currentOrientation = GetOrientationFromScreenPos(screenPos, textureOffset);
+
+            screenPos = GetModifiedScreenPos(screenPos, elementWidth, elementHeight, textureOffset);
+
+            // Orientation
+            if (outofScreenRotateTexture)
+                angle += GetImageAngle(outofScreenBaseOrientation, currentOrientation);
+
+            GUIUtility.RotateAroundPivot(-angle, new Vector2(screenPos.x, Screen.height - screenPos.y));
+
+            // Color
+            GUI.color = newColor;
+
+            // Draw out of screen texture
+            if(imageToDraw != null)
+                GUI.DrawTexture(new Rect(screenPos.x - (elementWidth / 2), Screen.height - (screenPos.y + elementHeight / 2), elementWidth, elementHeight), imageToDraw);
         }
     }
-
-    void OnDisable()
-    {
-        SetInvisible();
-    }
-
-    #endregion
+    
 }
