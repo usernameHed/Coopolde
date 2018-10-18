@@ -15,6 +15,7 @@ public class Bonnus : MonoBehaviour
         {
             CoopoldeManager.Instance.difficulty += difficultyToAdd;
 
+            CoopoldeManager.Instance.AddBonus(1);
             SoundManager.GetSingleton.PlaySound("Bonus");
             SpawnerBonus.Instance.Spawn();
             LightDecrease.Instance.PercentToAdd(percentToAdd);
