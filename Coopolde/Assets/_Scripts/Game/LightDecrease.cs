@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightDecrease : MonoBehaviour
+public class LightDecrease : SingletonMono<LightDecrease>
 {
     [SerializeField]
     private MySelf mySelf;
@@ -56,6 +56,12 @@ public class LightDecrease : MonoBehaviour
         {
             lightIntensity += speedIncrease * Time.deltaTime;
         }
+
+        SetAllScale();
+    }
+
+    private void SetAllScale()
+    {
         lightIntensity = Mathf.Clamp(lightIntensity, lightMin, lightMax);
 
         float newSizeTrigger = lightIntensity * maxSizeTrigger / lightMax;
@@ -65,6 +71,13 @@ public class LightDecrease : MonoBehaviour
         float newSizeLight = lightIntensity * maxSizeLamp / lightMax;
         lights[0].spotAngle = newSizeLight;
         lights[1].spotAngle = newSizeLight;
+    }
+
+    public void SetToPercent(float percent)
+    {
+        lightIntensity = percent;
+
+        SetAllScale();
     }
 
     public void GameOver()

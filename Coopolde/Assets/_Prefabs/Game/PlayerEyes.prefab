@@ -557,7 +557,7 @@ MonoBehaviour:
   lightMax: 100
   lightMin: 10
   speedDecrease: 30
-  speedIncrease: 100
+  speedIncrease: 5
   lightToGameOver: 40
   lightIntensity: 100
 --- !u!114 &114437251930988236
