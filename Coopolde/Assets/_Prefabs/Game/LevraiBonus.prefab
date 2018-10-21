@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23533460324921532}
   - component: {fileID: 135132575192012646}
   - component: {fileID: 114169043372583474}
+  - component: {fileID: 114121224673390008}
   m_Layer: 12
   m_Name: Bonus
   m_TagString: Bonus
@@ -114,6 +115,53 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1827115004932312}
   m_Mesh: {fileID: 4300000, guid: 89cbe59daf38b4f5b9e56ce71ee811ec, type: 3}
+--- !u!114 &114121224673390008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1827115004932312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ea853c7d0740c547be26cb008a1ab54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasSortOrder: 0
+  startVisible: 1
+  hideWhenKinematic: 1
+  usedDrawMode: 1
+  timeOpti: 0
+  isInPlayer: 0
+  isMulti: 0
+  addUp: 83
+  isOpPowerPlayer: 0
+  opacityOpOnScreen: 0.6
+  opacityOpOutScreen: 1
+  hideOnScreen: 1
+  onScreenSprite: {fileID: 21300000, guid: cc5788adeeee8427fa13d6d1a458ee9a, type: 3}
+  onScreenTextureColor: {r: 1, g: 1, b: 1, a: 1}
+  onScreenTextureSize: 0.1
+  onScreenTextureRotation: 0
+  hideOutofScreen: 0
+  outofScreenSprite: {fileID: 21300000, guid: cc5788adeeee8427fa13d6d1a458ee9a, type: 3}
+  outofScreenSpriteArray:
+  - {fileID: 21300000, guid: cc5788adeeee8427fa13d6d1a458ee9a, type: 3}
+  outofScreenTextureColor: {r: 1, g: 1, b: 1, a: 1}
+  outofScreenTextureScreenPercentSize: 0.1
+  outofScreenBorderOffset: {x: 0, y: 0}
+  outofScreenTextureRotation: 0
+  outofScreenRotateTexture: 1
+  outofScreenBaseOrientation: 0
+  fadeInDuration: 2
+  fadeOutDuration: 4
+  minScale: 1
+  maxScale: 1
+  minDistance: 1
+  maxDistance: 20
+  scaleOnScreen: 0.6
+  animationMode: 0
+  scaleAnimAmplitude: 0.5
+  scaleAnimSmooth: 0.4
 --- !u!114 &114169043372583474
 MonoBehaviour:
   m_ObjectHideFlags: 1

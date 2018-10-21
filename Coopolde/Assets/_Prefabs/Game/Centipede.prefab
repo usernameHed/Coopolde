@@ -1073,22 +1073,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1761700021288254
-GameObject:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4177749479104634}
-  - component: {fileID: 108526115498837478}
-  m_Layer: 12
-  m_Name: Spot Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1767760973932286
 GameObject:
   m_ObjectHideFlags: 1
@@ -1535,15 +1519,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1462658937139620}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.47, y: 2, z: 3.5}
+  m_LocalRotation: {x: -0, y: 0.9764096, z: -0, w: 0.21592669}
+  m_LocalPosition: {x: -9.810001, y: 2, z: 5.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4690248279150106}
   - {fileID: 4869406144029982}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 155.06001, z: 0}
 --- !u!4 &4045736299632526
 Transform:
   m_ObjectHideFlags: 1
@@ -1746,19 +1730,6 @@ Transform:
   m_Father: {fileID: 4581942907859438}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4177749479104634
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1761700021288254}
-  m_LocalRotation: {x: 0.9888086, y: 0, z: 0, w: 0.1491902}
-  m_LocalPosition: {x: 0, y: 3.21, z: 2.44}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4690248279150106}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 162.84, y: 0, z: 0}
 --- !u!4 &4184379315781892
 Transform:
   m_ObjectHideFlags: 1
@@ -2358,7 +2329,6 @@ Transform:
   - {fileID: 4221507228278386}
   - {fileID: 4245776459098892}
   - {fileID: 4581942907859438}
-  - {fileID: 4177749479104634}
   m_Father: {fileID: 4041798301342918}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3785,43 +3755,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!108 &108526115498837478
-Light:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1761700021288254}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 13.75
-  m_Range: 4.78
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 0
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
 --- !u!114 &114141623219073364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3834,9 +3767,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeGettingAngry:
-    timeCoolDown: 1
+    timeCoolDown: 2
   timeLoseInterestWhenAttacking:
-    timeCoolDown: 4
+    timeCoolDown: 10
   cuca: {fileID: 114968930353594208}
   state: 0
   frequency:
@@ -3904,7 +3837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pc: {fileID: 114968930353594208}
-  speed: 3000
+  speed: 1700
   speedMultiplyer: 1
 --- !u!114 &114968930353594208
 MonoBehaviour:
@@ -3924,13 +3857,25 @@ MonoBehaviour:
   timeOfDeath: 0
   speedTurnOnWall: 5
   speedMoveOnWall: 10
+  whiteMaterial: {fileID: 2100000, guid: 9decdff772213f94492729cd5460630c, type: 2}
+  redMaterial: {fileID: 2100000, guid: d28d160813139b24ea9fd09f0779d2cb, type: 2}
+  meshToChangeColor:
+  - {fileID: 23157700671174496}
+  - {fileID: 23080586038954028}
+  - {fileID: 23336039423278120}
+  - {fileID: 23167676198132554}
+  - {fileID: 23359165839886860}
+  - {fileID: 23966116895995314}
+  eyes:
+  - {fileID: 23196211409792476}
+  - {fileID: 23708584406525098}
   refToFollow: {fileID: 0}
   iaCentiped: {fileID: 114141623219073364}
   isAttacking: 0
   isWalking: 0
   isRunning: 0
   isMeInsideUs: 0
-  lightCentiped: {fileID: 1761700021288254}
+  lightCentiped: {fileID: 0}
   isDying: 0
 --- !u!114 &114982213362242776
 MonoBehaviour:

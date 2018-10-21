@@ -6,6 +6,7 @@ using TMPro;
 [TypeInfoBox("[ILevelLocal] Manage Setup Scene behaviour")]
 public class CoopoldeManager : SingletonMono<CoopoldeManager>
 {
+    public LifeEntity meHP;
     [SerializeField]
     public MySelf mySelf;
     [SerializeField]
@@ -17,8 +18,10 @@ public class CoopoldeManager : SingletonMono<CoopoldeManager>
 
     [SerializeField]
     private FrequencyCoolDown addDifficultyOverTime;
+    [SerializeField]
+    private float difficultyOverTime;
 
-    public int difficulty = 1;
+    public float difficulty = 1;
 
     private void Start()
     {
@@ -36,7 +39,7 @@ public class CoopoldeManager : SingletonMono<CoopoldeManager>
     {
         if (addDifficultyOverTime.IsStartedAndOver())
         {
-            difficulty++;
+            difficulty+=difficultyOverTime;
             addDifficultyOverTime.StartCoolDown();
         }
     }

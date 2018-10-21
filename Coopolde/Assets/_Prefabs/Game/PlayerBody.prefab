@@ -3243,9 +3243,9 @@ MonoBehaviour:
   rb: {fileID: 54814866556309930}
   playerInput: {fileID: 114180182235388758}
   idPlayer: 0
-  runningMultiplyer: 2
+  runningMultiplyer: 2.3
   timeOfDeath: 0.5
-  factorRepulseHit: 20
+  factorRepulseHit: 50
   whiteMaterial: {fileID: 2100000, guid: 312cad097f9dd7749ae29f10d28db090, type: 2}
   redMaterial: {fileID: 2100000, guid: d28d160813139b24ea9fd09f0779d2cb, type: 2}
   meshToChangeColor:
@@ -3321,7 +3321,7 @@ MonoBehaviour:
     vibrateRight: 1
     strenthRight: 0.195
     durationRight: 0.65
-  soundToPlayHit: 
+  soundToPlayHit: DamageOnPlayer
   lifeMax: 10
   currentLife: 10
 --- !u!114 &114469722146376358
@@ -3336,7 +3336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pc: {fileID: 114204397497319936}
-  speed: 2500
+  speed: 1000
   speedMultiplyer: 1
 --- !u!114 &114475090567048320
 MonoBehaviour:
@@ -3363,7 +3363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 840b322ae2a96ec4190dad28d0ed99a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnRate: 800
+  turnRate: 500
   objectToTurn: {fileID: 4757079329493242}
   canTurn: 0
   dirToTurn: {x: 0, y: 0}

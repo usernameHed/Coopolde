@@ -74,4 +74,10 @@ public class LifeEntity : MonoBehaviour
         }
 
     }
+
+    public void Heal(int hp)
+    {
+        currentLife += hp;
+        if (currentLife > lifeMax) currentLife = lifeMax;
+    }
 }

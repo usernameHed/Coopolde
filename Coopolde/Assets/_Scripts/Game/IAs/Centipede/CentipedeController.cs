@@ -16,6 +16,15 @@ public class CentipedeController : EntityController, IKillable
     private float speedMoveOnWall = 5f;
 
     [SerializeField]
+    private Material whiteMaterial;
+    [SerializeField]
+    private Material redMaterial;
+    [SerializeField]
+    private List<MeshRenderer> meshToChangeColor;
+    [SerializeField]
+    private List<MeshRenderer> eyes;
+
+    [SerializeField]
     public GameObject refToFollow = null;
 
     [SerializeField]
@@ -103,9 +112,24 @@ public class CentipedeController : EntityController, IKillable
     public void SetAttacking(bool attack)
     {
         isAttacking = attack;
-        lightCentiped.SetActive(attack);
-        SoundManager.GetSingleton.PlaySound("Scream");
+        //lightCentiped.SetActive(attack);
+        if(attack) SoundManager.GetSingleton.PlaySound("Scream");
+
+
+        SetMaterials(!attack);
         //refToFollow = toFollow;
+    }
+
+    private void SetMaterials(bool white)
+    {
+        for (int i = 0; i < meshToChangeColor.Count; i++)
+        {
+            meshToChangeColor[i].material = (white) ? whiteMaterial : redMaterial;
+        }
+        for (int i = 0; i < eyes.Count; i++)
+        {
+            eyes[i].material = (!white) ? whiteMaterial : redMaterial;
+        }
     }
 
     /// <summary>

@@ -55,6 +55,7 @@ public class UI_Transition : MonoBehaviour
 
     private void SelectEnded(Transition t)
     {
+        SoundManager.GetSingleton.PlaySound("EnemyDeath");
         switch(t)
         {
             case Transition.PLAY:

@@ -534,7 +534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1bd6fa6c601a254e9e74b7269ece7f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hurtAmount: 5
+  hurtAmount: 2
   hurtOnlyPlayer: 1
   isPlayer: 0
   kamikaze: 1
@@ -555,7 +555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pc: {fileID: 114989981954306254}
-  speed: 500
+  speed: 3500
   speedMultiplyer: 1
 --- !u!114 &114659780441506440
 MonoBehaviour:
@@ -591,7 +591,7 @@ MonoBehaviour:
   playerMove: {fileID: 114596258677788746}
   entityTurn: {fileID: 0}
   rb: {fileID: 54129894220693974}
-  timeOfDeath: 0.5
+  timeOfDeath: 1
   isOnCamera: {fileID: 114659780441506440}
   nice: {fileID: 1513594055091060}
   bad: {fileID: 1551804531233698}

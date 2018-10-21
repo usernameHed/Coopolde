@@ -54,7 +54,7 @@ public class SpawnerCrawler : MonoBehaviour
         {
             Spawn();
             timerSpawn.Reset();
-            timerSpawn.StartCoolDown(Random.Range(minTime, maxTime));
+            timerSpawn.StartCoolDown(Random.Range(minTime / CoopoldeManager.Instance.difficulty, maxTime / CoopoldeManager.Instance.difficulty));
             Debug.Log("Spawner !!");
         }
     }

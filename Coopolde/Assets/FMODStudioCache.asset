@@ -26,9 +26,11 @@ MonoBehaviour:
   - {fileID: 114711508724752238}
   - {fileID: 114362087080676092}
   - {fileID: 114265360256330706}
+  - {fileID: 114900650554012824}
+  - {fileID: 114611128428981606}
   MasterBankRef: {fileID: 114754046239624124}
   StringsBankRef: {fileID: 114493336874613306}
-  stringsBankWriteTime: 636754760950000000
+  stringsBankWriteTime: 636757434280000000
   cacheVersion: 2
 --- !u!114 &114225797188922034
 MonoBehaviour:
@@ -148,11 +150,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets/StreamingAssets/ReadyToGo/Build/Desktop/Master Bank.strings.bank
-  lastModified: 636754760950000000
+  lastModified: 636757434280000000
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1218
+    Value: 1304
   Exists: 1
 --- !u!114 &114523355795070112
 MonoBehaviour:
@@ -261,6 +263,28 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 474
+--- !u!114 &114611128428981606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/RedEyes
+  guid: 23a63c2b7fb49e4fa7dfd0d1c59fb5bb
+  Banks:
+  - {fileID: 114754046239624124}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3041
 --- !u!114 &114655556046810414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,11 +383,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: /Users/paulgaston/Documents/GitHub/Coopolde/Coopolde/Assets/StreamingAssets/ReadyToGo/Build/Desktop/Master
     Bank.bank
-  lastModified: 636754760950000000
+  lastModified: 636757434280000000
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1283776
+    Value: 1324096
   Exists: 1
 --- !u!114 &114824396393975208
 MonoBehaviour:
@@ -406,6 +430,28 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 10389
+--- !u!114 &114900650554012824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Bonus
+  guid: 4a1208cff3e05342b0504aa7d628ae52
+  Banks:
+  - {fileID: 114754046239624124}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1410
 --- !u!114 &114924678395734666
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -73,6 +73,7 @@ public class RedEyes : EntityController, IKillable
             isAngry = true;
             nice.SetActive(false);
             bad.SetActive(true);
+            SoundManager.GetSingleton.PlaySound("RedEyes");
         }
     }
 
@@ -93,6 +94,7 @@ public class RedEyes : EntityController, IKillable
             return;
 
         dirCura = refToFollow.transform.position - rb.transform.position;
+        dirCura = dirCura.normalized;
         if (entityTurn)
             entityTurn.SetDirection(new Vector2(dirCura.x, dirCura.z), false);
     }

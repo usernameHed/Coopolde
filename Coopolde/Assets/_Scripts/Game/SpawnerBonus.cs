@@ -6,7 +6,9 @@ public class SpawnerBonus : SingletonMono<SpawnerBonus>
 {
     [SerializeField]
     private float rangeRadius = 3f;
-    
+
+    [SerializeField]
+    private Transform firstSpawn;
 
     [SerializeField]
     private List<IsOnCamera> spawnPoints;
@@ -25,7 +27,7 @@ public class SpawnerBonus : SingletonMono<SpawnerBonus>
 
     private void Start()
     {
-        Spawn();
+        FirstSpawn();
     }
 
     public void Spawn()
@@ -42,6 +44,12 @@ public class SpawnerBonus : SingletonMono<SpawnerBonus>
         pos.x = (pos.x - rangeRadius) + Random.Range(0, rangeRadius * 2);
         pos.z = (pos.z - rangeRadius) + Random.Range(0, rangeRadius * 2);
         GameObject bonus = Instantiate(prefabsBonus, pos, Quaternion.identity, parentBonus);
+    }
+
+    public void FirstSpawn()
+    {
+
+        GameObject bonus = Instantiate(prefabsBonus, firstSpawn.position, Quaternion.identity, parentBonus);
     }
 
     public void GameOver()
